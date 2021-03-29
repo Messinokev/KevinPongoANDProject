@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_goals">
+
+    <fragment
+        android:id="@+id/navigation_goals"
+        android:name="github.com.Messinokev.kevinpongo_and_project.ui.goals.GoalsFragment"
+        android:label="@string/title_goals"
+        tools:layout="@layout/fragment_goals" />
+
+    <fragment
+        android:id="@+id/navigation_budgetPlanner"
+        android:name="github.com.Messinokev.kevinpongo_and_project.ui.budgetPlanner.BudgetPlannerFragment"
+        android:label="@string/title_budgetPlanner"
+        tools:layout="@layout/fragment_budget_planner" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="github.com.Messinokev.kevinpongo_and_project.ui.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
+
+
+</navigation>
