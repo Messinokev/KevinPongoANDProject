@@ -3,6 +3,7 @@ package github.com.Messinokev.kevinpongo_and_project.ui.goals;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -35,6 +36,17 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull GoalAdapter.ViewHolder holder, int position) {
         holder.title.setText(goals.getValue().get(position).getTitle());
+        double deposit = goals.getValue().get(position).getDeposit();
+        double price =  goals.getValue().get(position).getPrice();
+
+        int percentage = (int) Math.round(((deposit/price)*100));
+
+        if(percentage > 100){
+            percentage = 100;
+        }
+
+        holder.percentage.setText(percentage + "%");
+        holder.progressBar.setProgress(percentage);
     }
 
     @Override
@@ -44,6 +56,8 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView title;
+        TextView percentage;
+        ProgressBar progressBar;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -54,6 +68,8 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.ViewHolder> {
                 }
             });
             title = itemView.findViewById(R.id.title);
+            progressBar = itemView.findViewById(R.id.progressBar);
+            percentage = itemView.findViewById(R.id.percentage);
         }
     }
 

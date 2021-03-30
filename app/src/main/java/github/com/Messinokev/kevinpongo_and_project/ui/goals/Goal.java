@@ -12,10 +12,13 @@ public class Goal {
 
     private String Title;
     private int price;
+    private int deposit;
     private String description;
     private long numberOfDays;
     private Date startDate;
     private Date endDate;
+
+
 
     public Goal(String title, int price, String description, Date startDate, Date endDate) {
         Title = title;
@@ -25,6 +28,15 @@ public class Goal {
         this.endDate = endDate;
         long diff = endDate.getTime() - startDate.getTime();
         numberOfDays =  TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+        deposit = 4500;
+    }
+
+    public int getDeposit() {
+        return deposit;
+    }
+
+    public void setDeposit(int deposit) {
+        this.deposit = deposit;
     }
 
     public long getNumberOfDays() {

@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -42,21 +43,6 @@ public class GoalsFragment extends Fragment implements GoalAdapter.OnListItemCli
         GoalAdapter adapter = new GoalAdapter(goalsViewModel.getAllGoals(),this);
         recyclerView.setAdapter(adapter);
 
-        /*final TextView textView = root.findViewById(R.id.text_home);
-        goalsViewModel.getAllGoals().observe(getViewLifecycleOwner(), new Observer<List<Goal>>() {
-            @Override
-            public void onChanged(@Nullable List<Goal> goals) {
-                if (!goals.isEmpty()) {
-                    textView.setText("");
-                    for (Goal g : goals) {
-                        textView.append(g.getTitle() + "\n");
-                    }
-                } else {
-                    textView.setText("Empty");
-                }
-            }
-        });*/
-
         FloatingActionButton floatingActionButton = root.findViewById(R.id.floating);
         floatingActionButton.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), CreateGoalActivity.class);
@@ -68,6 +54,6 @@ public class GoalsFragment extends Fragment implements GoalAdapter.OnListItemCli
 
     @Override
     public void onClick(int position) {
-        /*Toast.makeText(this, "Title: " + goalsViewModel.getAllGoals().getValue().get(position).getTitle(), Toast.LENGTH_SHORT).show();*/
+        Toast.makeText(this.getContext(), "Title: " + goalsViewModel.getAllGoals().getValue().get(position).getTitle(), Toast.LENGTH_SHORT).show();
     }
 }

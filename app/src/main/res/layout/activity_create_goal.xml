@@ -1,30 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".CreateGoalActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/endDateTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="End Date:"
-        app:layout_constraintEnd_toStartOf="@+id/startDateCalendarView"
-        app:layout_constraintHorizontal_bias="0.471"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startDateTextView" />
+<androidx.constraintlayout.widget.ConstraintLayout
+    tools:context=".CreateGoalActivity"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <EditText
         android:id="@+id/editTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="211dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="56dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,18 +28,24 @@
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Title:"
+        android:text="Title*:"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/editTitle"
         app:layout_constraintEnd_toStartOf="@+id/editTitle"
+        app:layout_constraintHorizontal_bias="0.64"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/preiceTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Price:"
+        android:text="Price*:"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/editPrice"
         app:layout_constraintEnd_toStartOf="@+id/editPrice"
+        app:layout_constraintHorizontal_bias="0.594"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -62,8 +64,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Description:"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/editDescription"
         app:layout_constraintEnd_toStartOf="@+id/editDescription"
+        app:layout_constraintHorizontal_bias="0.378"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -81,19 +86,32 @@
         android:id="@+id/startDateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:text="Start Date:"
+        android:layout_marginTop="96dp"
+        android:text="Start Date*:"
+        android:textSize="15sp"
         app:layout_constraintEnd_toStartOf="@+id/startDateCalendarView"
-        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descriptionTextView" />
+
+    <TextView
+        android:id="@+id/endDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="End Date*:"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toStartOf="@+id/startDateCalendarView"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/startDateTextView" />
 
     <CalendarView
         android:id="@+id/startDateCalendarView"
         android:layout_width="210dp"
-        android:layout_height="300dp"
+        android:layout_height="340dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="52dp"
+        android:layout_marginEnd="64dp"
         android:firstDayOfWeek="2"
         android:maxDate="12/31/2049"
         android:minDate="03/01/2021"
@@ -103,9 +121,9 @@
     <CalendarView
         android:id="@+id/endDateCalendarView"
         android:layout_width="210dp"
-        android:layout_height="300dp"
+        android:layout_height="340dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="52dp"
+        android:layout_marginEnd="64dp"
         android:firstDayOfWeek="2"
         android:maxDate="12/31/2049"
         android:minDate="03/01/2021"
@@ -114,14 +132,30 @@
 
     <Button
         android:id="@+id/createGoalButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="130dp"
+        android:layout_height="60dp"
+        android:onClick="addGoal"
         android:text="ADD GOAL"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/startDateCalendarView"
-        app:layout_constraintVertical_bias="0.3"
-        android:onClick="addGoal"/>
+        app:layout_constraintVertical_bias="0.1" />
+
+    <TextView
+        android:id="@+id/errorMessage"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:textColor="#FF0000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createGoalButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
