@@ -8,7 +8,7 @@ The app also has another side, where the user can set a budget planner, for inst
 
 Must have:
 
-1.	As a user I want to be able to create a goal with a budget what I want to save my money for, so that I can see the progress of  how much money is missing for my goal.
+-[x]	As a user I want to be able to create a goal with a budget what I want to save my money for, so that I can see the progress of  how much money is missing for my goal.
 2.	As a user I want to be able to set a time period for my goal, so that I can see when I would like to achieve my goal.
 3.	As a user I want to be able to create my budget planner and set the budget I plan to spend on a specific category, so that I can keep track of how much money I can spend on a specific category.
 4.	As a user I want to be able to set a specific time period for my budget planner, so that I can keep track of how much money I can spend in average.
