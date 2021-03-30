@@ -22,6 +22,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.List;
 
 import github.com.Messinokev.kevinpongo_and_project.CreateGoalActivity;
+import github.com.Messinokev.kevinpongo_and_project.GoalViewActivity;
 import github.com.Messinokev.kevinpongo_and_project.R;
 
 public class GoalsFragment extends Fragment implements GoalAdapter.OnListItemClickListener {
@@ -54,6 +55,9 @@ public class GoalsFragment extends Fragment implements GoalAdapter.OnListItemCli
 
     @Override
     public void onClick(int position) {
-        Toast.makeText(this.getContext(), "Title: " + goalsViewModel.getAllGoals().getValue().get(position).getTitle(), Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(getActivity(), GoalViewActivity.class);
+        intent.putExtra("position", position);
+        startActivity(intent);
     }
 }

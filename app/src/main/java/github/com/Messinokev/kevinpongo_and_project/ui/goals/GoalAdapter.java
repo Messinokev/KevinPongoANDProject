@@ -36,14 +36,8 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull GoalAdapter.ViewHolder holder, int position) {
         holder.title.setText(goals.getValue().get(position).getTitle());
-        double deposit = goals.getValue().get(position).getDeposit();
-        double price =  goals.getValue().get(position).getPrice();
-
-        int percentage = (int) Math.round(((deposit/price)*100));
-
-        if(percentage > 100){
-            percentage = 100;
-        }
+        
+        int percentage = goals.getValue().get(position).calculatePercentage();
 
         holder.percentage.setText(percentage + "%");
         holder.progressBar.setProgress(percentage);

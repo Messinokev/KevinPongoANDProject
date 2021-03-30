@@ -19,7 +19,6 @@ public class Goal {
     private Date endDate;
 
 
-
     public Goal(String title, int price, String description, Date startDate, Date endDate) {
         Title = title;
         this.price = price;
@@ -27,8 +26,87 @@ public class Goal {
         this.startDate = startDate;
         this.endDate = endDate;
         long diff = endDate.getTime() - startDate.getTime();
-        numberOfDays =  TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
-        deposit = 4500;
+        numberOfDays = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+        deposit = 4577;
+    }
+
+
+    public int calculatePercentage() {
+        double dDeposit = deposit;
+        double dPrice = price;
+        int percentage = (int) Math.round(((dDeposit / dPrice) * 100));
+
+        if (percentage > 100) {
+            percentage = 100;
+        }
+        return percentage;
+    }
+
+    public long calculateAveragePerDay(){
+        long daysLeft = getDaysLeft();
+        if (daysLeft == 0){
+            return 0;
+        }else {
+            return maxDeposit()/daysLeft;
+        }
+    }
+
+    public long calculateAveragePerWeek(){
+        long daysLeft = getDaysLeft()/7;
+        if (daysLeft == 0){
+            return 0;
+        }else {
+            return maxDeposit()/daysLeft;
+        }
+    }
+
+    public long calculateAveragePerMonth(){
+        long daysLeft = getDaysLeft()/30;
+        if (daysLeft == 0){
+            return 0;
+        }else {
+            return maxDeposit()/daysLeft;
+        }
+    }
+
+    public long calculateAveragePerYear(){
+        long daysLeft = getDaysLeft()/365;
+        if (daysLeft == 0){
+            return 0;
+        }else {
+            return maxDeposit()/daysLeft;
+        }
+    }
+
+    public long getDaysLeft() {
+        long startDay = startDate.getTime();
+        long endDay = endDate.getTime();
+
+        Date today = new Date();
+        long daysLeft;
+        long diff;
+
+        if (today.getTime() > endDay) {
+            daysLeft = 0;
+        } else {
+            if (startDay > today.getTime()) {
+                diff = endDate.getTime() - startDate.getTime();
+            } else {
+                diff = endDate.getTime() - today.getTime();
+            }
+            daysLeft = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) +1;
+        }
+
+        return daysLeft;
+    }
+
+    public void addDeposit(int deposit){
+        this.deposit += deposit;
+        calculatePercentage();
+    }
+
+    public int maxDeposit(){
+        return price-deposit;
     }
 
     public int getDeposit() {

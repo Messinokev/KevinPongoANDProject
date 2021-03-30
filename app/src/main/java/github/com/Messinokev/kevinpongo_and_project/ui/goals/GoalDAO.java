@@ -16,12 +16,9 @@ public class GoalDAO {
         allGoals.setValue(newList);
 
         List<Goal> currentGoals = allGoals.getValue();
-        currentGoals.add(new Goal("Travel to Paris",6500, "Description", new Date(), new Date()));
-        currentGoals.add(new Goal("Travel to Paris",7500, "Description", new Date(), new Date()));
-        currentGoals.add(new Goal("Travel to Paris",20000, "Description", new Date(), new Date()));
-        currentGoals.add(new Goal("Travel to Paris",11000, "Description", new Date(), new Date()));
-        currentGoals.add(new Goal("Travel to Paris",17650, "Description", new Date(), new Date()));
-        currentGoals.add(new Goal("Travel to Paris",14500, "Description", new Date(), new Date()));
+        currentGoals.add(new Goal("Travel to Paris",6500, "Travel to Paris", new Date(), new Date()));
+        currentGoals.add(new Goal("Volvo F50",7500, "Volvo F50", new Date(), new Date()));
+        currentGoals.add(new Goal("Birthday present to Mom",20000, "Birthday present to Mom", new Date(), new Date()));
         allGoals.setValue(currentGoals);
     }
 

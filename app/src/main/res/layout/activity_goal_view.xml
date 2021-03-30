@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".GoalViewActivity">
+
+
+        <TextView
+            android:id="@+id/goalViewTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Title:"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@+id/goalViewTitle"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/goalViewTitle"
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="64dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintStart_toEndOf="@+id/goalViewTitleTextView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/goalViewPriceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Price:"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@+id/goalViewPrice"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/goalViewPrice"
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="64dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintStart_toEndOf="@+id/goalViewPriceTextView"
+            app:layout_constraintTop_toBottomOf="@+id/goalViewTitle" />
+
+        <TextView
+            android:id="@+id/goalViewDesTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Description:"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@+id/goalViewDescription"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/goalViewDescription"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="64dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintStart_toEndOf="@+id/goalViewDesTextView"
+            app:layout_constraintTop_toBottomOf="@+id/goalViewPrice" />
+
+        <TextView
+            android:id="@+id/goalViewStartDateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Start Date:"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@+id/goalViewStartDate"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/goalViewStartDate"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/goalViewEndDateTextView"
+            app:layout_constraintStart_toEndOf="@+id/goalViewStartDateTextView" />
+
+        <TextView
+            android:id="@+id/goalViewEndDateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="End Date:"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@+id/goalViewEndDate"
+            app:layout_constraintStart_toEndOf="@+id/goalViewStartDate" />
+
+        <TextView
+            android:id="@+id/goalViewEndDate"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintStart_toEndOf="@+id/goalViewEndDateTextView"
+            app:layout_constraintTop_toBottomOf="@+id/goalViewDescription" />
+
+        <TextView
+            android:id="@+id/goalViewNumberOfDaysTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:text="Days Left:"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@+id/goalViewDaysLeft"
+            app:layout_constraintStart_toEndOf="@+id/goalViewProgress" />
+
+        <TextView
+            android:id="@+id/goalViewDaysLeft"
+            android:layout_width="75dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintStart_toEndOf="@+id/goalViewNumberOfDaysTextView"
+            app:layout_constraintTop_toBottomOf="@+id/goalViewEndDate" />
+
+        <TextView
+            android:id="@+id/goalViewSavePerDayTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Save per Day:"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@+id/goalViewSavePerDay"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/goalViewSavePerDay"
+            android:layout_width="75dp"
+            android:layout_height="30dp"
+
+            android:layout_marginStart="8dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/goalViewSavePerMonthTextView"
+            app:layout_constraintStart_toEndOf="@+id/goalViewSavePerDayTextView" />
+
+        <TextView
+            android:id="@+id/goalViewSavePerMonthTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="Save per Month:"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@+id/goalViewSavePerMonth"
+            app:layout_constraintStart_toEndOf="@+id/goalViewSavePerDay" />
+
+        <TextView
+            android:id="@+id/goalViewSavePerMonth"
+            android:layout_width="75dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/goalViewSavePerMonthTextView"
+            app:layout_constraintTop_toBottomOf="@+id/goalViewDaysLeft" />
+
+
+        <TextView
+            android:id="@+id/goalViewPerWeekTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Save per Week:"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@+id/goalViewSavePerWeek"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/goalViewSavePerWeek"
+            android:layout_width="75dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/goalViewSavePerYearTextView"
+            app:layout_constraintStart_toEndOf="@+id/goalViewPerWeekTextView" />
+
+        <TextView
+            android:id="@+id/goalViewSavePerYearTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Save per Year:"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@+id/goalViewSavePerYear"
+            app:layout_constraintStart_toEndOf="@+id/goalViewSavePerWeek" />
+
+        <TextView
+            android:id="@+id/goalViewSavePerYear"
+            android:layout_width="75dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintStart_toEndOf="@+id/goalViewSavePerYearTextView"
+            app:layout_constraintTop_toBottomOf="@+id/goalViewSavePerMonth" />
+
+        <TextView
+            android:id="@+id/goalViewProgressTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Progress:"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@+id/goalViewProgress"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/goalViewProgress"
+            android:layout_width="75dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/goalViewNumberOfDaysTextView"
+            app:layout_constraintStart_toEndOf="@+id/goalViewProgressTextView" />
+
+        <TextView
+            android:id="@+id/goalViewInDepositTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="In deposit:"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@+id/goalViewInDeposit"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/goalViewInDeposit"
+            android:layout_width="75dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/goalViewDepositLeftTextView"
+            app:layout_constraintStart_toEndOf="@+id/goalViewInDepositTextView" />
+
+        <TextView
+            android:id="@+id/viewGoalAddMoneyTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Deposit Money:"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@+id/goalViewAddMoney"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/goalViewAddMoney"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:ems="10"
+            android:inputType="number"
+            app:layout_constraintBaseline_toBaselineOf="@+id/depositMoneyButton"
+            app:layout_constraintEnd_toStartOf="@+id/depositMoneyButton"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/viewGoalAddMoneyTextView" />
+
+        <Button
+            android:id="@+id/depositMoneyButton"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:onClick="depositMoney"
+            android:text="+"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toEndOf="@+id/viewGoalAddMoneyTextView"
+            app:layout_constraintTop_toBottomOf="@+id/goalViewErrorMessage" />
+
+        <TextView
+            android:id="@+id/goalViewErrorMessage"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:textColor="#FF0000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/goalViewInDeposit" />
+
+        <TextView
+            android:id="@+id/goalViewDepositLeftTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:text="Deposit Left: "
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@+id/goalViewDepositLeft"
+            app:layout_constraintStart_toEndOf="@+id/goalViewInDeposit" />
+
+        <TextView
+            android:id="@+id/goalViewDepositLeft"
+            android:layout_width="75dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintStart_toEndOf="@+id/goalViewDepositLeftTextView"
+            app:layout_constraintTop_toBottomOf="@+id/goalViewSavePerYear" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
+
