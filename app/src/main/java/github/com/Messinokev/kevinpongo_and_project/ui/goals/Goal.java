@@ -42,39 +42,39 @@ public class Goal {
         return percentage;
     }
 
-    public long calculateAveragePerDay(){
+    public long calculateAveragePerDay() {
         long daysLeft = getDaysLeft();
-        if (daysLeft == 0){
+        if (daysLeft == 0) {
             return 0;
-        }else {
-            return maxDeposit()/daysLeft;
+        } else {
+            return maxDeposit() / daysLeft;
         }
     }
 
-    public long calculateAveragePerWeek(){
-        long daysLeft = getDaysLeft()/7;
-        if (daysLeft == 0){
+    public long calculateAveragePerWeek() {
+        long daysLeft = getDaysLeft() / 7;
+        if (daysLeft == 0) {
             return 0;
-        }else {
-            return maxDeposit()/daysLeft;
+        } else {
+            return maxDeposit() / daysLeft;
         }
     }
 
-    public long calculateAveragePerMonth(){
-        long daysLeft = getDaysLeft()/30;
-        if (daysLeft == 0){
+    public long calculateAveragePerMonth() {
+        long daysLeft = getDaysLeft() / 30;
+        if (daysLeft == 0) {
             return 0;
-        }else {
-            return maxDeposit()/daysLeft;
+        } else {
+            return maxDeposit() / daysLeft;
         }
     }
 
-    public long calculateAveragePerYear(){
-        long daysLeft = getDaysLeft()/365;
-        if (daysLeft == 0){
+    public long calculateAveragePerYear() {
+        long daysLeft = getDaysLeft() / 365;
+        if (daysLeft == 0) {
             return 0;
-        }else {
-            return maxDeposit()/daysLeft;
+        } else {
+            return maxDeposit() / daysLeft;
         }
     }
 
@@ -94,19 +94,39 @@ public class Goal {
             } else {
                 diff = endDate.getTime() - today.getTime();
             }
-            daysLeft = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) +1;
+            daysLeft = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) + 1;
         }
 
         return daysLeft;
     }
 
-    public void addDeposit(int deposit){
+    public void addDeposit(int deposit) {
         this.deposit += deposit;
         calculatePercentage();
     }
 
-    public int maxDeposit(){
-        return price-deposit;
+    public String backgroundColor() {
+        long diff = endDate.getTime() - startDate.getTime();
+        long totalDays = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) + 1;
+
+        long daysLeft = getDaysLeft();
+
+        double calculate = (double) (totalDays-daysLeft) / totalDays;
+
+        if (daysLeft != 0) {
+            if (calculate < 0.75) {
+                return "Green";
+            }
+
+            if (calculate < 0.9) {
+                return "Orange";
+            }
+        }
+        return "Red";
+    }
+
+    public int maxDeposit() {
+        return price - deposit;
     }
 
     public int getDeposit() {

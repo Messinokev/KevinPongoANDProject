@@ -41,6 +41,20 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.ViewHolder> {
 
         holder.percentage.setText(percentage + "%");
         holder.progressBar.setProgress(percentage);
+
+        String background = goals.getValue().get(position).backgroundColor();
+        if (background.equals("Red")){
+            holder.percentage.setBackgroundResource(R.drawable.rounded_rightcorner_view_red);
+            holder.title.setBackgroundResource(R.drawable.rounded_leftcorner_view_red);
+        }
+        if (background.equals("Green")){
+            holder.percentage.setBackgroundResource(R.drawable.rounded_rightcorner_view_green);
+            holder.title.setBackgroundResource(R.drawable.rounded_leftcorner_view_green);
+        }
+        if (background.equals("Orange")){
+            holder.percentage.setBackgroundResource(R.drawable.rounded_rightcorner_view_orange);
+            holder.title.setBackgroundResource(R.drawable.rounded_leftcorner_view_orange);
+        }
     }
 
     @Override
