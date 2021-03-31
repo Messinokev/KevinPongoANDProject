@@ -1,4 +1,4 @@
-package github.com.Messinokev.kevinpongo_and_project;
+package github.com.Messinokev.kevinpongo_and_project.ui.goals;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +20,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 
+import github.com.Messinokev.kevinpongo_and_project.R;
 import github.com.Messinokev.kevinpongo_and_project.ui.goals.Goal;
 import github.com.Messinokev.kevinpongo_and_project.ui.goals.GoalsFragment;
 import github.com.Messinokev.kevinpongo_and_project.ui.goals.GoalsViewModel;

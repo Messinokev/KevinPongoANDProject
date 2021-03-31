@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KevinPongoANDProject">
         <activity
-            android:name=".GoalViewActivity"
+            android:name=".ui.goals.GoalViewActivity"
             android:parentActivityName=".MainActivity"/>
         <activity
-            android:name=".CreateGoalActivity"
+            android:name=".ui.goals.CreateGoalActivity"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

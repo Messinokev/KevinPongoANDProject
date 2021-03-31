@@ -1,4 +1,4 @@
-package github.com.Messinokev.kevinpongo_and_project;
+package github.com.Messinokev.kevinpongo_and_project.ui.goals;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -13,6 +13,7 @@ import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 
+import github.com.Messinokev.kevinpongo_and_project.R;
 import github.com.Messinokev.kevinpongo_and_project.ui.goals.Goal;
 import github.com.Messinokev.kevinpongo_and_project.ui.goals.GoalsViewModel;
 
