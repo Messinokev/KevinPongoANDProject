@@ -20,6 +20,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 
+import github.com.Messinokev.kevinpongo_and_project.MainActivity;
 import github.com.Messinokev.kevinpongo_and_project.R;
 import github.com.Messinokev.kevinpongo_and_project.ui.goals.Goal;
 import github.com.Messinokev.kevinpongo_and_project.ui.goals.GoalsFragment;
@@ -27,22 +28,22 @@ import github.com.Messinokev.kevinpongo_and_project.ui.goals.GoalsViewModel;
 
 public class CreateGoalActivity extends AppCompatActivity {
 
-    CalendarView startDateCalendarView;
-    long startDate;
-    CalendarView endDateCalendarView;
-    long endDate;
-    TextView startDateText;
-    TextView endDateText;
+    private CalendarView startDateCalendarView;
+    private long startDate;
+    private CalendarView endDateCalendarView;
+    private long endDate;
+    private TextView startDateText;
+    private TextView endDateText;
 
-    TextView errorMessage;
+    private TextView errorMessage;
 
-    EditText editTitle;
-    EditText editPrice;
-    EditText editDescription;
+    private EditText editTitle;
+    private EditText editPrice;
+    private EditText editDescription;
 
-    GoalsViewModel viewModel;
+    private GoalsViewModel viewModel;
 
-    Calendar calendar = Calendar.getInstance();
+    private Calendar calendar = Calendar.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -10,8 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KevinPongoANDProject">
         <activity
+            android:name=".ui.budgetPlanner.CreateBudgetPlannerActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".ui.goals.GoalViewActivity"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ui.goals.CreateGoalActivity"
             android:parentActivityName=".MainActivity" />

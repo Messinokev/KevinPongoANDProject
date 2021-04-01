@@ -16,6 +16,28 @@
         <item name="android:maxDate">12/31/2049</item>
         <item name="android:minDate">03/01/2021</item>
     </style>
+
+    <style name="pricesCreateBudget">
+        <item name="android:maxLength">6</item>
+        <item name="android:layout_width">90dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:ems">10</item>
+        <item name="android:inputType">number</item>
+    </style>
+
+    <style name="warningTextView">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#FF0000</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>
 
 

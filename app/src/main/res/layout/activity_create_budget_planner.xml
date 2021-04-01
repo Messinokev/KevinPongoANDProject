@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.budgetPlanner.CreateBudgetPlannerActivity">
+
+
+        <TextView
+            android:id="@+id/createBudgetTitleTextView"
+            style="@style/TextViewSimple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Title:"
+            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetTitle"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/createBudgetTitle"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="64dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintStart_toEndOf="@+id/createBudgetTitleTextView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/createBudgetCategoriesTextView"
+            style="@style/TextViewSimple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Categories:"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createBudgetTitle" />
+
+        <TextView
+            android:id="@+id/createBudgetFoodTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Food:"
+            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetFood"
+            app:layout_constraintStart_toEndOf="@+id/createBudgetFoodCheck" />
+
+        <EditText
+            android:id="@+id/createBudgetFood"
+            style="@style/pricesCreateBudget"
+            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetRentCheck"
+            app:layout_constraintStart_toEndOf="@+id/createBudgetFoodTextView" />
+
+        <CheckBox
+            android:id="@+id/createBudgetFoodCheck"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetFoodTextView"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/createBudgetRentTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Rent:"
+            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetRent"
+            app:layout_constraintStart_toEndOf="@+id/createBudgetRentCheck" />
+
+        <EditText
+            android:id="@+id/createBudgetRent"
+            style="@style/pricesCreateBudget"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/createBudgetRentTextView"
+            app:layout_constraintTop_toBottomOf="@+id/createBudgetCategoriesTextView" />
+
+        <CheckBox
+            android:id="@+id/createBudgetRentCheck"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="32dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetRentTextView"
+            app:layout_constraintStart_toEndOf="@+id/createBudgetFood" />
+
+        <TextView
+            android:id="@+id/createBudgetFriendsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Social:"
+            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetSocial"
+            app:layout_constraintStart_toEndOf="@+id/createBudgetFriendsCheck" />
+
+        <EditText
+            android:id="@+id/createBudgetSocial"
+            style="@style/pricesCreateBudget"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/createBudgetFriendsTextView"
+            app:layout_constraintTop_toBottomOf="@+id/createBudgetRent" />
+
+        <CheckBox
+            android:id="@+id/createBudgetFriendsCheck"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="24dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetFriendsTextView"
+            app:layout_constraintStart_toEndOf="@+id/createBudgetHobby" />
+
+        <TextView
+            android:id="@+id/createBudgetHobbyTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Hobby:"
+            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetHobby"
+            app:layout_constraintStart_toEndOf="@+id/createBudgetHobbyCheck" />
+
+        <EditText
+            android:id="@+id/createBudgetHobby"
+            style="@style/pricesCreateBudget"
+            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetFriendsCheck"
+            app:layout_constraintStart_toEndOf="@+id/createBudgetHobbyTextView" />
+
+        <CheckBox
+            android:id="@+id/createBudgetHobbyCheck"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetHobbyTextView"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/createBudgetTravelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Travel:"
+            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetTravel"
+            app:layout_constraintStart_toEndOf="@+id/createBudgetTravelCheck" />
+
+        <EditText
+            android:id="@+id/createBudgetTravel"
+            style="@style/pricesCreateBudget"
+            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetOtherCheck"
+            app:layout_constraintStart_toEndOf="@+id/createBudgetTravelTextView" />
+
+        <CheckBox
+            android:id="@+id/createBudgetTravelCheck"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetTravelTextView"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/createBudgetOtherTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Other:"
+            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetOther"
+            app:layout_constraintStart_toEndOf="@+id/createBudgetOtherCheck" />
+
+        <EditText
+            android:id="@+id/createBudgetOther"
+            style="@style/pricesCreateBudget"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/createBudgetOtherTextView"
+            app:layout_constraintTop_toBottomOf="@+id/createBudgetSocial" />
+
+        <CheckBox
+            android:id="@+id/createBudgetOtherCheck"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="24dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetOtherTextView"
+            app:layout_constraintStart_toEndOf="@+id/createBudgetTravel" />
+
+        <TextView
+            android:id="@+id/createBudgetStartDateTextView"
+            style="@style/TextViewSimple"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="96dp"
+            android:text="Start Date:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createBudgetTravelTextView" />
+
+        <TextView
+            android:id="@+id/createBudgetEndDateTextView"
+            style="@style/TextViewSimple"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="End Date:"
+            app:layout_constraintEnd_toStartOf="@+id/createBudgetStartDate"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createBudgetStartDateTextView" />
+
+        <CalendarView
+            android:id="@+id/createBudgetStartDate"
+            style="@style/CalendarView"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toStartOf="@+id/createBudgetTravel"
+            app:layout_constraintTop_toBottomOf="@+id/createBudgetOther" />
+
+        <CalendarView
+            android:id="@+id/createBudgetEndDate"
+            style="@style/CalendarView"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toStartOf="@+id/createBudgetTravel"
+            app:layout_constraintTop_toBottomOf="@+id/createBudgetOther" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CREATE BUDGET PLANNER"
+            android:onClick="createBudgetPlanner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createBudgetStartDate" />
+
+        <TextView
+            android:id="@+id/createBudgetErrorMessage"
+            style="@style/warningTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
+

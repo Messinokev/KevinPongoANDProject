@@ -1,5 +1,6 @@
 package github.com.Messinokev.kevinpongo_and_project.ui.goals;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class GoalDAO {
         return instance;
     }
 
-    public MutableLiveData<List<Goal>> getAllGoals() {
+    public LiveData<List<Goal>> getAllGoals() {
         return allGoals;
     }
 
