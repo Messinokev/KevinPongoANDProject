@@ -49,6 +49,8 @@ public class CreateGoalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_goal);
 
+        this.setTitle("Create new Goal");
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         viewModel = new ViewModelProvider(this).get(GoalsViewModel.class);

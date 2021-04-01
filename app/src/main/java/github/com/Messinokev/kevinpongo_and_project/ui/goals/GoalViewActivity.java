@@ -66,6 +66,8 @@ public class GoalViewActivity extends AppCompatActivity {
         int position = bundle.getInt("position");
         goal = goalsViewModel.getAllGoals().getValue().get(position);
 
+        this.setTitle(goal.getTitle());
+
         String pattern = "dd/MM/yyyy";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         String startDateString = simpleDateFormat.format(goal.getStartDate());
