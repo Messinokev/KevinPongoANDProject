@@ -50,24 +50,20 @@ public class CreateGoalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_goal);
 
         this.setTitle("Create new Goal");
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         viewModel = new ViewModelProvider(this).get(GoalsViewModel.class);
 
         startDateCalendarView = findViewById(R.id.startDateCalendarView);
         endDateCalendarView = findViewById(R.id.endDateCalendarView);
         startDateText = findViewById(R.id.startDateTextView);
         endDateText = findViewById(R.id.endDateTextView);
-
         errorMessage = findViewById(R.id.errorMessage);
-
         editTitle = findViewById(R.id.editTitle);
         editPrice = findViewById(R.id.editPrice);
         editDescription = findViewById(R.id.editDescription);
 
         endDateCalendarView.setVisibility(View.INVISIBLE);
-        startDateText.setTypeface(null, Typeface.BOLD);
+        endDateText.setTypeface(null, Typeface.NORMAL);
 
         startDateText.setOnClickListener(v -> {
             startDateCalendarView.setVisibility(View.VISIBLE);

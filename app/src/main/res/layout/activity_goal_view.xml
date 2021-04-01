@@ -15,12 +15,9 @@
 
         <TextView
             android:id="@+id/goalViewTitleTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TextViewSimple"
             android:layout_marginStart="16dp"
             android:text="Title:"
-            android:textSize="15sp"
-            android:textStyle="bold"
             app:layout_constraintBaseline_toBaselineOf="@+id/goalViewTitle"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -37,12 +34,9 @@
 
         <TextView
             android:id="@+id/goalViewPriceTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TextViewSimple"
             android:layout_marginStart="16dp"
             android:text="Price:"
-            android:textSize="15sp"
-            android:textStyle="bold"
             app:layout_constraintBaseline_toBaselineOf="@+id/goalViewPrice"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -59,12 +53,9 @@
 
         <TextView
             android:id="@+id/goalViewDesTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TextViewSimple"
             android:layout_marginStart="16dp"
             android:text="Description:"
-            android:textSize="15sp"
-            android:textStyle="bold"
             app:layout_constraintBaseline_toBaselineOf="@+id/goalViewDescription"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -81,12 +72,9 @@
 
         <TextView
             android:id="@+id/goalViewStartDateTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TextViewSimple"
             android:layout_marginStart="16dp"
             android:text="Start Date:"
-            android:textSize="15sp"
-            android:textStyle="bold"
             app:layout_constraintBaseline_toBaselineOf="@+id/goalViewStartDate"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -100,12 +88,9 @@
 
         <TextView
             android:id="@+id/goalViewEndDateTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TextViewSimple"
             android:layout_marginStart="12dp"
             android:text="End Date:"
-            android:textSize="15sp"
-            android:textStyle="bold"
             app:layout_constraintBaseline_toBaselineOf="@+id/goalViewEndDate"
             app:layout_constraintStart_toEndOf="@+id/goalViewStartDate" />
 
@@ -121,12 +106,9 @@
 
         <TextView
             android:id="@+id/goalViewNumberOfDaysTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TextViewSimple"
             android:layout_marginStart="48dp"
             android:text="Days Left:"
-            android:textSize="15sp"
-            android:textStyle="bold"
             app:layout_constraintBaseline_toBaselineOf="@+id/goalViewDaysLeft"
             app:layout_constraintStart_toEndOf="@+id/goalViewProgress" />
 
@@ -142,12 +124,9 @@
 
         <TextView
             android:id="@+id/goalViewSavePerDayTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TextViewSimple"
             android:layout_marginStart="16dp"
             android:text="Save per Day:"
-            android:textSize="15sp"
-            android:textStyle="bold"
             app:layout_constraintBaseline_toBaselineOf="@+id/goalViewSavePerDay"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -162,12 +141,9 @@
 
         <TextView
             android:id="@+id/goalViewSavePerMonthTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TextViewSimple"
             android:layout_marginStart="20dp"
             android:text="Save per Month:"
-            android:textSize="15sp"
-            android:textStyle="bold"
             app:layout_constraintBaseline_toBaselineOf="@+id/goalViewSavePerMonth"
             app:layout_constraintStart_toEndOf="@+id/goalViewSavePerDay" />
 
@@ -184,12 +160,9 @@
 
         <TextView
             android:id="@+id/goalViewPerWeekTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TextViewSimple"
             android:layout_marginStart="16dp"
             android:text="Save per Week:"
-            android:textSize="15sp"
-            android:textStyle="bold"
             app:layout_constraintBaseline_toBaselineOf="@+id/goalViewSavePerWeek"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -203,12 +176,9 @@
 
         <TextView
             android:id="@+id/goalViewSavePerYearTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TextViewSimple"
             android:layout_marginStart="8dp"
             android:text="Save per Year:"
-            android:textSize="15sp"
-            android:textStyle="bold"
             app:layout_constraintBaseline_toBaselineOf="@+id/goalViewSavePerYear"
             app:layout_constraintStart_toEndOf="@+id/goalViewSavePerWeek" />
 
@@ -225,12 +195,9 @@
 
         <TextView
             android:id="@+id/goalViewProgressTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TextViewSimple"
             android:layout_marginStart="16dp"
             android:text="Progress:"
-            android:textSize="15sp"
-            android:textStyle="bold"
             app:layout_constraintBaseline_toBaselineOf="@+id/goalViewProgress"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -244,12 +211,9 @@
 
         <TextView
             android:id="@+id/goalViewInDepositTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TextViewSimple"
             android:layout_marginStart="16dp"
             android:text="In deposit:"
-            android:textSize="15sp"
-            android:textStyle="bold"
             app:layout_constraintBaseline_toBaselineOf="@+id/goalViewInDeposit"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -263,12 +227,9 @@
 
         <TextView
             android:id="@+id/viewGoalAddMoneyTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TextViewSimple"
             android:layout_marginStart="16dp"
             android:text="Deposit Money:"
-            android:textSize="15sp"
-            android:textStyle="bold"
             app:layout_constraintBaseline_toBaselineOf="@+id/goalViewAddMoney"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -316,12 +277,9 @@
 
         <TextView
             android:id="@+id/goalViewDepositLeftTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TextViewSimple"
             android:layout_marginStart="40dp"
             android:text="Deposit Left: "
-            android:textSize="15sp"
-            android:textStyle="bold"
             app:layout_constraintBaseline_toBaselineOf="@+id/goalViewDepositLeft"
             app:layout_constraintStart_toEndOf="@+id/goalViewInDeposit" />
 

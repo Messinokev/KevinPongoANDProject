@@ -14,7 +14,7 @@
 
     <EditText
         android:id="@+id/editTitle"
-        android:layout_width="211dp"
+        android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="56dp"
@@ -26,11 +26,8 @@
 
     <TextView
         android:id="@+id/titleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TextViewSimple"
         android:text="Title*:"
-        android:textSize="15sp"
-        android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/editTitle"
         app:layout_constraintEnd_toStartOf="@+id/editTitle"
         app:layout_constraintHorizontal_bias="0.64"
@@ -38,11 +35,8 @@
 
     <TextView
         android:id="@+id/preiceTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TextViewSimple"
         android:text="Price*:"
-        android:textSize="15sp"
-        android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/editPrice"
         app:layout_constraintEnd_toStartOf="@+id/editPrice"
         app:layout_constraintHorizontal_bias="0.594"
@@ -61,11 +55,8 @@
 
     <TextView
         android:id="@+id/descriptionTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TextViewSimple"
         android:text="Description:"
-        android:textSize="15sp"
-        android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/editDescription"
         app:layout_constraintEnd_toStartOf="@+id/editDescription"
         app:layout_constraintHorizontal_bias="0.378"
@@ -84,11 +75,9 @@
 
     <TextView
         android:id="@+id/startDateTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TextViewSimple"
         android:layout_marginTop="96dp"
         android:text="Start Date*:"
-        android:textSize="15sp"
         app:layout_constraintEnd_toStartOf="@+id/startDateCalendarView"
         app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent"
@@ -96,11 +85,9 @@
 
     <TextView
         android:id="@+id/endDateTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TextViewSimple"
         android:layout_marginTop="24dp"
         android:text="End Date*:"
-        android:textSize="15sp"
         app:layout_constraintEnd_toStartOf="@+id/startDateCalendarView"
         app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent"
@@ -108,25 +95,13 @@
 
     <CalendarView
         android:id="@+id/startDateCalendarView"
-        android:layout_width="210dp"
-        android:layout_height="340dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="64dp"
-        android:firstDayOfWeek="2"
-        android:maxDate="12/31/2049"
-        android:minDate="03/01/2021"
+        style="@style/CalendarView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editDescription" />
 
     <CalendarView
         android:id="@+id/endDateCalendarView"
-        android:layout_width="210dp"
-        android:layout_height="340dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="64dp"
-        android:firstDayOfWeek="2"
-        android:maxDate="12/31/2049"
-        android:minDate="03/01/2021"
+        style="@style/CalendarView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editDescription" />
 

@@ -5,10 +5,7 @@
     android:shape="rectangle">
 
     <corners android:bottomLeftRadius="10dp"
-        android:topLeftRadius="10dp"
-        />
-
-    <!--- This is the background color -->
+        android:topLeftRadius="10dp" />
     <solid android:color="@color/orange" />
 
 </shape>
