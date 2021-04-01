@@ -15,7 +15,7 @@ public class Category {
     public Category(String name, int price, Date startDate, Date endDate) {
         this.name = name;
         this.price = price;
-        deposit = 9999;
+        deposit = 0;
         this.startDate = startDate;
         this.endDate = endDate;
         long diff = endDate.getTime() - startDate.getTime();
@@ -23,11 +23,13 @@ public class Category {
     }
 
     public long calculateUserAveragePerDay() {
-        long daysLeft = getDaysLeft();
+        Date today = new Date();
+        long diff = today.getTime() - startDate.getTime();
+        long daysLeft = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) + 1;
         if (daysLeft == 0) {
             return 0;
         } else {
-            return maxDeposit() / daysLeft;
+            return (price-deposit)/daysLeft;
         }
     }
 
@@ -37,7 +39,7 @@ public class Category {
         if (daysLeft == 0) {
             return 0;
         } else {
-            return maxDeposit() / daysLeft;
+            return price / daysLeft;
         }
     }
 
@@ -96,7 +98,7 @@ public class Category {
     }
 
     public void setDeposit(int deposit) {
-        this.deposit = deposit;
+        this.deposit += deposit;
     }
 
     public String getName() {
