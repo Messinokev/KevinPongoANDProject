@@ -1,17 +1,21 @@
 package github.com.Messinokev.kevinpongo_and_project.ui.goals;
 
+import android.app.Application;
+
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import java.util.List;
 
-public class GoalsViewModel extends ViewModel {
+public class GoalsViewModel extends AndroidViewModel {
 
     private GoalRepository repository;
 
-    public GoalsViewModel() {
-        repository = GoalRepository.getInstance();
+    public GoalsViewModel(Application application) {
+        super(application);
+        repository = GoalRepository.getInstance(application);
     }
 
     public LiveData<List<Goal>> getAllGoals() {
@@ -20,5 +24,9 @@ public class GoalsViewModel extends ViewModel {
 
     public void addGoal(final Goal goal){
         repository.addGoal(goal);
+    }
+
+    public LiveData<Goal> getGoalById(int id){
+        return repository.getGoalById(id);
     }
 }

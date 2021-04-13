@@ -16,14 +16,12 @@ import github.com.Messinokev.kevinpongo_and_project.R;
 
 public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.ViewHolder> {
 
-    LiveData<List<Goal>> goals;
+    List<Goal> goals;
     OnListItemClickListener listener;
 
-    public GoalAdapter(LiveData<List<Goal>> goals, OnListItemClickListener listener) {
-        this.goals = goals;
+    public GoalAdapter(OnListItemClickListener listener) {
         this.listener = listener;
     }
-
 
     @NonNull
     @Override
@@ -35,14 +33,14 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull GoalAdapter.ViewHolder holder, int position) {
-        holder.title.setText(goals.getValue().get(position).getTitle());
+        holder.title.setText(goals.get(position).getTitle());
         
-        int percentage = goals.getValue().get(position).calculatePercentage();
+        int percentage = goals.get(position).calculatePercentage();
 
         holder.percentage.setText(percentage + "%");
         holder.progressBar.setProgress(percentage);
 
-        String background = goals.getValue().get(position).backgroundColor();
+        String background = goals.get(position).backgroundColor();
         if (background.equals("Red")){
             holder.percentage.setBackgroundResource(R.drawable.rounded_rightcorner_view_red);
             holder.title.setBackgroundResource(R.drawable.rounded_leftcorner_view_red);
@@ -59,7 +57,16 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return goals.getValue().size();
+        if(goals == null){
+            return 0;
+        }else{
+            return goals.size();
+        }
+    }
+
+    public void updateData(List<Goal> goals) {
+        this.goals = goals;
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

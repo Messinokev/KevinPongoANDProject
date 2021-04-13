@@ -3,33 +3,42 @@ package github.com.Messinokev.kevinpongo_and_project.ui.goals;
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+@Entity(tableName = "goal_table")
 public class Goal {
 
+    @PrimaryKey(autoGenerate = true)
+    private int id;
     private String Title;
     private int price;
     private int deposit;
     private String description;
     private long numberOfDays;
-    private Date startDate;
-    private Date endDate;
+    private long startDate;
+    private long endDate;
 
+    public Goal(){
+    }
 
-    public Goal(String title, int price, String description, Date startDate, Date endDate) {
+    public Goal(String title, int price, String description, long startDate, long endDate) {
         Title = title;
         this.price = price;
         this.description = description;
-        this.startDate = startDate;
+        this.startDate =  startDate;
         this.endDate = endDate;
-        long diff = endDate.getTime() - startDate.getTime();
+        long diff = endDate - startDate;
         numberOfDays = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
-        deposit = 4577;
+        deposit = 0;
     }
-
 
     public int calculatePercentage() {
         double dDeposit = deposit;
@@ -79,8 +88,9 @@ public class Goal {
     }
 
     public long getDaysLeft() {
-        long startDay = startDate.getTime();
-        long endDay = endDate.getTime();
+        long startDay = startDate;
+        long endDay = endDate;
+
 
         Date today = new Date();
         long daysLeft;
@@ -90,9 +100,9 @@ public class Goal {
             daysLeft = 0;
         } else {
             if (startDay > today.getTime()) {
-                diff = endDate.getTime() - startDate.getTime();
+                diff = endDate - startDate;
             } else {
-                diff = endDate.getTime() - today.getTime();
+                diff = endDate - today.getTime();
             }
             daysLeft = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) + 1;
         }
@@ -106,7 +116,7 @@ public class Goal {
     }
 
     public String backgroundColor() {
-        long diff = endDate.getTime() - startDate.getTime();
+        long diff = endDate - startDate;
         long totalDays = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) + 1;
 
         long daysLeft = getDaysLeft();
@@ -123,6 +133,14 @@ public class Goal {
             }
         }
         return "Red";
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int maxDeposit() {
@@ -145,19 +163,19 @@ public class Goal {
         this.numberOfDays = numberOfDays;
     }
 
-    public Date getStartDate() {
+    public long getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(long startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public long getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(long endDate) {
         this.endDate = endDate;
     }
 
@@ -183,5 +201,14 @@ public class Goal {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Goal{" +
+                "id=" + id +
+                ", Title='" + Title + '\'' +
+                ", price=" + price +
+                '}';
     }
 }

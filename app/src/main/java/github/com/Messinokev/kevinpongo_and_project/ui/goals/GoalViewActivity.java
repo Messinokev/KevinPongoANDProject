@@ -1,6 +1,7 @@
 package github.com.Messinokev.kevinpongo_and_project.ui.goals;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.graphics.Color;
@@ -9,35 +10,32 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import github.com.Messinokev.kevinpongo_and_project.R;
-import github.com.Messinokev.kevinpongo_and_project.ui.goals.Goal;
-import github.com.Messinokev.kevinpongo_and_project.ui.goals.GoalsViewModel;
 
-public class GoalViewActivity extends AppCompatActivity {
+public class GoalViewActivity extends AppCompatActivity{
 
-    TextView title;
-    TextView price;
-    TextView description;
-    TextView startDate;
-    TextView endDate;
-    TextView daysLeft;
-    TextView savePerDay;
-    TextView savePerWeek;
-    TextView savePerMonth;
-    TextView savePerYear;
-    TextView progress;
-    TextView inDeposit;
-    TextView depositLeft;
-    TextView errorMessage;
-    EditText deposit;
-
-    Goal goal;
+    private TextView title;
+    private TextView price;
+    private TextView description;
+    private TextView startDate;
+    private TextView endDate;
+    private TextView daysLeft;
+    private TextView savePerDay;
+    private TextView savePerWeek;
+    private TextView savePerMonth;
+    private TextView savePerYear;
+    private TextView progress;
+    private  TextView inDeposit;
+    private  TextView depositLeft;
+    private TextView errorMessage;
+    private EditText deposit;
 
     private GoalsViewModel goalsViewModel;
+
+    private Goal goalGoal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,33 +62,39 @@ public class GoalViewActivity extends AppCompatActivity {
                 new ViewModelProvider(this).get(GoalsViewModel.class);
         Bundle bundle = getIntent().getExtras();
         int position = bundle.getInt("position");
-        goal = goalsViewModel.getAllGoals().getValue().get(position);
 
-        this.setTitle(goal.getTitle());
+        goalGoal = goalsViewModel.getGoalById(position).getValue();
+
+        this.setTitle(goalGoal.getTitle());
 
         String pattern = "dd/MM/yyyy";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-        String startDateString = simpleDateFormat.format(goal.getStartDate());
-        String endDateString = simpleDateFormat.format(goal.getEndDate());
+        String startDateString = simpleDateFormat.format(goalGoal.getStartDate());
+        String endDateString = simpleDateFormat.format(goalGoal.getEndDate());
 
-        title.setText(goal.getTitle());
-        price.setText(String.valueOf(goal.getPrice()));
-        description.setText(goal.getDescription());
+        title.setText(goalGoal.getTitle());
+        price.setText(String.valueOf(goalGoal.getPrice()));
+        description.setText(goalGoal.getDescription());
         startDate.setText(startDateString);
         endDate.setText(endDateString);
-        daysLeft.setText(String.valueOf(goal.getDaysLeft()));
+        daysLeft.setText(String.valueOf(goalGoal.getDaysLeft()));
 
         refreshCalculations();
         calculateAverages();
     }
 
+    private void updateData(List<Goal> goals) {
+
+    }
+
+
     public void depositMoney(View view) {
         if (!deposit.getText().toString().equals("")) {
-            if (Integer.parseInt(deposit.getText().toString()) > goal.maxDeposit()) {
+            if (Integer.parseInt(deposit.getText().toString()) > goalGoal.maxDeposit()) {
                 errorMessage.setTextColor(Color.parseColor("#FF0000"));
-                errorMessage.setText("Max you can deposit: " + goal.maxDeposit());
+                errorMessage.setText("Max you can deposit: " + goalGoal.maxDeposit());
             } else {
-                goal.addDeposit(Integer.parseInt(deposit.getText().toString()));
+                goalGoal.addDeposit(Integer.parseInt(deposit.getText().toString()));
                 refreshCalculations();
                 calculateAverages();
                 deposit.setText("");
@@ -105,15 +109,15 @@ public class GoalViewActivity extends AppCompatActivity {
     }
 
     private void calculateAverages(){
-        savePerDay.setText(String.valueOf(goal.calculateAveragePerDay()));
-        savePerWeek.setText(String.valueOf(goal.calculateAveragePerWeek()));
-        savePerMonth.setText(String.valueOf(goal.calculateAveragePerMonth()));
-        savePerYear.setText(String.valueOf(goal.calculateAveragePerYear()));
+        savePerDay.setText(String.valueOf(goalGoal.calculateAveragePerDay()));
+        savePerWeek.setText(String.valueOf(goalGoal.calculateAveragePerWeek()));
+        savePerMonth.setText(String.valueOf(goalGoal.calculateAveragePerMonth()));
+        savePerYear.setText(String.valueOf(goalGoal.calculateAveragePerYear()));
     }
 
     private void refreshCalculations(){
-        progress.setText(goal.calculatePercentage() + "%");
-        inDeposit.setText(String.valueOf(goal.getDeposit()));
-        depositLeft.setText(String.valueOf(goal.maxDeposit()));
+        progress.setText(goalGoal.calculatePercentage() + "%");
+        inDeposit.setText(String.valueOf(goalGoal.getDeposit()));
+        depositLeft.setText(String.valueOf(goalGoal.maxDeposit()));
     }
 }

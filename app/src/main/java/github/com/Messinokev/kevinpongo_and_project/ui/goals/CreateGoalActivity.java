@@ -115,7 +115,7 @@ public class CreateGoalActivity extends AppCompatActivity {
                         editDescription.setText("");
                     }
 
-                    Goal newGoal = new Goal(editTitle.getText().toString(), Integer.parseInt(editPrice.getText().toString()), editDescription.getText().toString(), new Date(startDate), new Date(endDate));
+                    Goal newGoal = new Goal(editTitle.getText().toString(), Integer.parseInt(editPrice.getText().toString()), editDescription.getText().toString(), startDate, endDate);
                     viewModel.addGoal(newGoal);
                     editTitle.setText("");
                     editPrice.setText("");
