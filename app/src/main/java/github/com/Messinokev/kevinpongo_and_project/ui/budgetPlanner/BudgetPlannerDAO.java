@@ -2,30 +2,19 @@ package github.com.Messinokev.kevinpongo_and_project.ui.budgetPlanner;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.room.Dao;
+import androidx.room.Insert;
+import androidx.room.Query;
 
+import java.util.List;
 
+@Dao
+public interface BudgetPlannerDAO {
 
-public class BudgetPlannerDAO {
+    @Query("SELECT * FROM category_table")
+     LiveData<List<Category>> getAllCategories();
 
-    private MutableLiveData<BudgetPlanner> budgetPlanner;
-    private static BudgetPlannerDAO instance;
+    @Insert
+     void createCategory(Category category);
 
-    private BudgetPlannerDAO() {
-        budgetPlanner = new MutableLiveData<>();
-    }
-
-    public static BudgetPlannerDAO getInstance() {
-        if (instance == null) {
-            instance = new BudgetPlannerDAO();
-        }
-        return instance;
-    }
-
-    public LiveData<BudgetPlanner> getBudgetPlanner() {
-        return budgetPlanner;
-    }
-
-    public void createBudgetPlanner(BudgetPlanner budgetPlanner){
-        this.budgetPlanner.setValue(budgetPlanner);
-    }
 }

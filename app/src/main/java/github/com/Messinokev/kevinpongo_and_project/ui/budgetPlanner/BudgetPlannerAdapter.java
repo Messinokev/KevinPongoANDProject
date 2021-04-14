@@ -19,10 +19,10 @@ import github.com.Messinokev.kevinpongo_and_project.R;
 
 public class BudgetPlannerAdapter extends RecyclerView.Adapter<BudgetPlannerAdapter.ViewHolder> {
 
-    LiveData<List<Category>> budgetPlannerCategories;
+    List<Category> budgetPlannerCategories;
 
-    public BudgetPlannerAdapter(LiveData<List<Category>> budgetPlannerCategories) {
-        this.budgetPlannerCategories = budgetPlannerCategories;
+    public BudgetPlannerAdapter() {
+
     }
 
     @NonNull
@@ -35,48 +35,58 @@ public class BudgetPlannerAdapter extends RecyclerView.Adapter<BudgetPlannerAdap
 
     @Override
     public void onBindViewHolder(@NonNull BudgetPlannerAdapter.ViewHolder holder, int position) {
-        holder.categoryName.setText(budgetPlannerCategories.getValue().get(position).getName());
-        holder.categoryPrice.setText("Plan: " + budgetPlannerCategories.getValue().get(position).getPrice());
-        holder.inDeposit.setText("Spent: " + budgetPlannerCategories.getValue().get(position).getDeposit());
-        holder.average.setText("Avg: "+budgetPlannerCategories.getValue().get(position).calculateAveragePerDay() + " /Day");
-        holder.userAverage.setText("Your Avg: " + budgetPlannerCategories.getValue().get(position).calculateUserAveragePerDay() + " /Day");
+        holder.categoryName.setText(budgetPlannerCategories.get(position).getName());
+        holder.categoryPrice.setText("Plan: " + budgetPlannerCategories.get(position).getPrice());
+        holder.inDeposit.setText("Spent: " + budgetPlannerCategories.get(position).getDeposit());
+        holder.average.setText("Avg: "+budgetPlannerCategories.get(position).calculateAveragePerDay() + " /Day");
+        holder.userAverage.setText("Your Avg: " + budgetPlannerCategories.get(position).calculateUserAveragePerDay() + " /Day");
 
         Date today = new Date();
 
         //you can modify by back in the time but not in the future
-        if (budgetPlannerCategories.getValue().get(position).getStartDate().getTime() <= today.getTime()) {
+        if (budgetPlannerCategories.get(position).getStartDate() <= today.getTime()) {
             holder.depositButton.setOnClickListener(v -> {
                 int deposit = Integer.parseInt(holder.deposit.getText().toString());
-                budgetPlannerCategories.getValue().get(position).setDeposit(deposit);
-                holder.inDeposit.setText("Spent: " + budgetPlannerCategories.getValue().get(position).getDeposit());
-                holder.userAverage.setText("Your Avg: " + budgetPlannerCategories.getValue().get(position).calculateUserAveragePerDay() + " /Day");
+                budgetPlannerCategories.get(position).setDeposit(deposit);
+                holder.inDeposit.setText("Spent: " + budgetPlannerCategories.get(position).getDeposit());
+                holder.userAverage.setText("Your Avg: " + budgetPlannerCategories.get(position).calculateUserAveragePerDay() + " /Day");
                 holder.deposit.setText("");
             });
         }
 
-        if (budgetPlannerCategories.getValue().get(position).getName().equals("Food")){
+        if (budgetPlannerCategories.get(position).getName().equals("Food")){
             holder.image.setImageResource(R.drawable.food);
         }
-        if (budgetPlannerCategories.getValue().get(position).getName().equals("Rent")){
+        if (budgetPlannerCategories.get(position).getName().equals("Rent")){
             holder.image.setImageResource(R.drawable.rent);
         }
-        if (budgetPlannerCategories.getValue().get(position).getName().equals("Hobby")){
+        if (budgetPlannerCategories.get(position).getName().equals("Hobby")){
             holder.image.setImageResource(R.drawable.hobby);
         }
-        if (budgetPlannerCategories.getValue().get(position).getName().equals("Social")){
+        if (budgetPlannerCategories.get(position).getName().equals("Social")){
             holder.image.setImageResource(R.drawable.social);
         }
-        if (budgetPlannerCategories.getValue().get(position).getName().equals("Travel")){
+        if (budgetPlannerCategories.get(position).getName().equals("Travel")){
             holder.image.setImageResource(R.drawable.travel);
         }
-        if (budgetPlannerCategories.getValue().get(position).getName().equals("Other")){
+        if (budgetPlannerCategories.get(position).getName().equals("Other")){
             holder.image.setImageResource(R.drawable.other);
         }
     }
 
     @Override
     public int getItemCount() {
-        return budgetPlannerCategories.getValue().size();
+        if (budgetPlannerCategories == null){
+            return 0;
+        }
+        else {
+            return budgetPlannerCategories.size();
+        }
+    }
+
+    public void updateData(List<Category> categories) {
+        budgetPlannerCategories = categories;
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

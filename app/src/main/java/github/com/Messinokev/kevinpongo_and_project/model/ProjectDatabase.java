@@ -6,14 +6,17 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import github.com.Messinokev.kevinpongo_and_project.ui.budgetPlanner.BudgetPlannerDAO;
+import github.com.Messinokev.kevinpongo_and_project.ui.budgetPlanner.Category;
 import github.com.Messinokev.kevinpongo_and_project.ui.goals.Goal;
 import github.com.Messinokev.kevinpongo_and_project.ui.goals.GoalDAO;
 
-@Database(entities = {Goal.class}, version = 2)
+@Database(entities = {Goal.class, Category.class}, version = 3)
 public abstract class ProjectDatabase extends RoomDatabase {
 
     private static ProjectDatabase instance;
     public abstract GoalDAO goalDAO();
+    public abstract BudgetPlannerDAO budgetPlannerDAO();
 
     public static synchronized ProjectDatabase getInstance(Context context) {
         if (instance == null) {

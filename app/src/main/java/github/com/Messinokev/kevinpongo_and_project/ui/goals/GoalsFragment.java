@@ -35,7 +35,7 @@ public class GoalsFragment extends Fragment implements GoalAdapter.OnListItemCli
         GoalAdapter adapter = new GoalAdapter(this);
         recyclerView.setAdapter(adapter);
 
-        goalsViewModel.getAllGoals().observe(getViewLifecycleOwner(), goals -> adapter.updateData(goals));
+        goalsViewModel.getAllGoals().observe(getViewLifecycleOwner(), adapter::updateData);
 
         FloatingActionButton floatingActionButton = root.findViewById(R.id.floating);
         floatingActionButton.setOnClickListener(v -> {

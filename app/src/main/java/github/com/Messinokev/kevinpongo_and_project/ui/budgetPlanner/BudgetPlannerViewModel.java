@@ -1,5 +1,8 @@
 package github.com.Messinokev.kevinpongo_and_project.ui.budgetPlanner;
 
+import android.app.Application;
+
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -9,19 +12,20 @@ import java.util.List;
 import github.com.Messinokev.kevinpongo_and_project.ui.goals.Goal;
 import github.com.Messinokev.kevinpongo_and_project.ui.goals.GoalRepository;
 
-public class BudgetPlannerViewModel extends ViewModel {
+public class BudgetPlannerViewModel extends AndroidViewModel {
 
     private BudgetPlannerRepository repository;
 
-    public BudgetPlannerViewModel() {
-        repository = BudgetPlannerRepository.getInstance();
+    public BudgetPlannerViewModel(Application application) {
+        super(application);
+        repository = BudgetPlannerRepository.getInstance(application);
     }
 
-    public LiveData<BudgetPlanner> getBudgetPlanner() {
-        return repository.getBudgetPlanner();
+    public LiveData<List<Category>> getCategories() {
+        return repository.getCategories();
     }
 
-    public void createBudgetPlanner(final BudgetPlanner budgetPlanner){
-        repository.createBudgetPlanner(budgetPlanner);
+    public void createCategory(final Category category){
+        repository.createCategory(category);
     }
 }

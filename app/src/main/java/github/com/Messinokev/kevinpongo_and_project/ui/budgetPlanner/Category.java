@@ -1,30 +1,36 @@
 package github.com.Messinokev.kevinpongo_and_project.ui.budgetPlanner;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+@Entity(tableName = "category_table")
 public class Category {
 
+    @PrimaryKey(autoGenerate = true)
+    private int id;
     String name;
     int price;
     int deposit;
     private long numberOfDays;
-    private Date startDate;
-    private Date endDate;
+    private long startDate;
+    private long endDate;
 
-    public Category(String name, int price, Date startDate, Date endDate) {
+    public Category(String name, int price, long startDate, long endDate) {
         this.name = name;
         this.price = price;
         deposit = 0;
         this.startDate = startDate;
         this.endDate = endDate;
-        long diff = endDate.getTime() - startDate.getTime();
+        long diff = endDate - startDate;
         numberOfDays = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
     }
 
     public long calculateUserAveragePerDay() {
         Date today = new Date();
-        long diff = today.getTime() - startDate.getTime();
+        long diff = today.getTime() - startDate;
         long daysLeft = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) + 1;
         if (daysLeft == 0) {
             return 0;
@@ -34,7 +40,7 @@ public class Category {
     }
 
     public long calculateAveragePerDay() {
-        long diff = endDate.getTime() - startDate.getTime();
+        long diff = endDate - startDate;
         long daysLeft = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) + 1;
         if (daysLeft == 0) {
             return 0;
@@ -48,8 +54,8 @@ public class Category {
     }
 
     public long getDaysLeft() {
-        long startDay = startDate.getTime();
-        long endDay = endDate.getTime();
+        long startDay = startDate;
+        long endDay = endDate;
 
         Date today = new Date();
         long daysLeft;
@@ -59,14 +65,22 @@ public class Category {
             daysLeft = 0;
         } else {
             if (startDay > today.getTime()) {
-                diff = endDate.getTime() - startDate.getTime();
+                diff = endDate - startDate;
             } else {
-                diff = endDate.getTime() - today.getTime();
+                diff = endDate - today.getTime();
             }
             daysLeft = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) + 1;
         }
 
         return daysLeft;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public long getNumberOfDays() {
@@ -77,19 +91,19 @@ public class Category {
         this.numberOfDays = numberOfDays;
     }
 
-    public Date getStartDate() {
+    public long getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(long startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public long getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(long endDate) {
         this.endDate = endDate;
     }
 

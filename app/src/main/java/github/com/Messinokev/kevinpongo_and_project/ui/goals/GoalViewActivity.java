@@ -35,8 +35,6 @@ public class GoalViewActivity extends AppCompatActivity{
 
     private GoalsViewModel goalsViewModel;
 
-    private Goal goalGoal;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,40 +61,38 @@ public class GoalViewActivity extends AppCompatActivity{
         Bundle bundle = getIntent().getExtras();
         int position = bundle.getInt("position");
 
-        goalGoal = goalsViewModel.getGoalById(position).getValue();
+         goalsViewModel.getGoalById(position+1).observe(this, goal -> {
 
-        this.setTitle(goalGoal.getTitle());
+            this.setTitle(goal.getTitle());
 
-        String pattern = "dd/MM/yyyy";
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-        String startDateString = simpleDateFormat.format(goalGoal.getStartDate());
-        String endDateString = simpleDateFormat.format(goalGoal.getEndDate());
+             String pattern = "dd/MM/yyyy";
+             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+             String startDateString = simpleDateFormat.format(goal.getStartDate());
+             String endDateString = simpleDateFormat.format(goal.getEndDate());
 
-        title.setText(goalGoal.getTitle());
-        price.setText(String.valueOf(goalGoal.getPrice()));
-        description.setText(goalGoal.getDescription());
-        startDate.setText(startDateString);
-        endDate.setText(endDateString);
-        daysLeft.setText(String.valueOf(goalGoal.getDaysLeft()));
+             title.setText(goal.getTitle());
+             price.setText(String.valueOf(goal.getPrice()));
+             description.setText(goal.getDescription());
+             startDate.setText(startDateString);
+             endDate.setText(endDateString);
+             daysLeft.setText(String.valueOf(goal.getDaysLeft()));
 
-        refreshCalculations();
-        calculateAverages();
-    }
-
-    private void updateData(List<Goal> goals) {
+             refreshCalculations(goal);
+             calculateAverages(goal);
+        });
 
     }
 
 
-    public void depositMoney(View view) {
+    public void depositMoney(View view, Goal goal) {
         if (!deposit.getText().toString().equals("")) {
-            if (Integer.parseInt(deposit.getText().toString()) > goalGoal.maxDeposit()) {
+            if (Integer.parseInt(deposit.getText().toString()) > goal.maxDeposit()) {
                 errorMessage.setTextColor(Color.parseColor("#FF0000"));
-                errorMessage.setText("Max you can deposit: " + goalGoal.maxDeposit());
+                errorMessage.setText("Max you can deposit: " + goal.maxDeposit());
             } else {
-                goalGoal.addDeposit(Integer.parseInt(deposit.getText().toString()));
-                refreshCalculations();
-                calculateAverages();
+                goal.addDeposit(Integer.parseInt(deposit.getText().toString()));
+                refreshCalculations(goal);
+                calculateAverages(goal);
                 deposit.setText("");
                 errorMessage.setTextColor(Color.parseColor("#018786"));
                 errorMessage.setText("Successfully deposited money!");
@@ -105,19 +101,19 @@ public class GoalViewActivity extends AppCompatActivity{
             errorMessage.setTextColor(Color.parseColor("#FF0000"));
             errorMessage.setText("Fill in Deposit Money field!");
         }
-
     }
 
-    private void calculateAverages(){
-        savePerDay.setText(String.valueOf(goalGoal.calculateAveragePerDay()));
-        savePerWeek.setText(String.valueOf(goalGoal.calculateAveragePerWeek()));
-        savePerMonth.setText(String.valueOf(goalGoal.calculateAveragePerMonth()));
-        savePerYear.setText(String.valueOf(goalGoal.calculateAveragePerYear()));
+    private void calculateAverages(Goal goal){
+        savePerDay.setText(String.valueOf(goal.calculateAveragePerDay()));
+        savePerWeek.setText(String.valueOf(goal.calculateAveragePerWeek()));
+        savePerMonth.setText(String.valueOf(goal.calculateAveragePerMonth()));
+        savePerYear.setText(String.valueOf(goal.calculateAveragePerYear()));
     }
 
-    private void refreshCalculations(){
-        progress.setText(goalGoal.calculatePercentage() + "%");
-        inDeposit.setText(String.valueOf(goalGoal.getDeposit()));
-        depositLeft.setText(String.valueOf(goalGoal.maxDeposit()));
+    private void refreshCalculations(Goal goal){
+        progress.setText(goal.calculatePercentage() + "%");
+        inDeposit.setText(String.valueOf(goal.getDeposit()));
+        depositLeft.setText(String.valueOf(goal.maxDeposit()));
     }
+
 }
