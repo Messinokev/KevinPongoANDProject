@@ -29,4 +29,8 @@ public class GoalsViewModel extends AndroidViewModel {
     public LiveData<Goal> getGoalById(int id){
         return repository.getGoalById(id);
     }
+
+    public void depositMoney(int id, int deposit){
+        repository.depositMoney(id,deposit);
+    }
 }

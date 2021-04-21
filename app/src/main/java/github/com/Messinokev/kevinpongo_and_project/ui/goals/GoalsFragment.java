@@ -20,6 +20,7 @@ public class GoalsFragment extends Fragment implements GoalAdapter.OnListItemCli
 
     private GoalsViewModel goalsViewModel;
     RecyclerView recyclerView;
+    GoalAdapter adapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class GoalsFragment extends Fragment implements GoalAdapter.OnListItemCli
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerView.hasFixedSize();
 
-        GoalAdapter adapter = new GoalAdapter(this);
+        adapter = new GoalAdapter(this);
         recyclerView.setAdapter(adapter);
 
         goalsViewModel.getAllGoals().observe(getViewLifecycleOwner(), adapter::updateData);
@@ -50,7 +51,8 @@ public class GoalsFragment extends Fragment implements GoalAdapter.OnListItemCli
     public void onClick(int position) {
 
         Intent intent = new Intent(getActivity(), GoalViewActivity.class);
-        intent.putExtra("position", position);
+        int id = adapter.goals.get(position).getId();
+        intent.putExtra("id", id);
         startActivity(intent);
     }
 }

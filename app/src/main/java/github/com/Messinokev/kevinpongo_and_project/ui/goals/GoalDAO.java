@@ -21,4 +21,7 @@ public interface GoalDAO {
 
     @Query("SELECT * FROM goal_table WHERE id = :id")
     LiveData<Goal> getGoalById(int id);
+
+    @Query("UPDATE goal_table SET deposit = deposit + :deposit WHERE id = :id")
+    void depositMoney(int id, int deposit);
 }

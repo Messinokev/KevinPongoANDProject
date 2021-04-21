@@ -58,36 +58,38 @@ public class BudgetPlannerFragment extends Fragment {
         recyclerView = root.findViewById(R.id.budgetRV);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerView.hasFixedSize();
-        BudgetPlannerAdapter adapter = new BudgetPlannerAdapter();
+        BudgetPlannerAdapter adapter = new BudgetPlannerAdapter(budgetPlannerViewModel);
         recyclerView.setAdapter(adapter);
 
-        budgetPlannerViewModel.getCategories().observe(getViewLifecycleOwner(), categories -> adapter.updateData(categories));
+        budgetPlannerViewModel.getCategories().observe(getViewLifecycleOwner(), categories -> {
+            adapter.updateData(categories);
 
-        if (adapter.getItemCount() == 0) {
-            emptyTextView.setVisibility(View.VISIBLE);
-            createButton.setVisibility(View.VISIBLE);
-            startDate.setVisibility(View.INVISIBLE);
-            endDate.setVisibility(View.INVISIBLE);
-            endDateTextView.setVisibility(View.INVISIBLE);
-            startDateTextView.setVisibility(View.INVISIBLE);
-        } else {
-            startDate.setVisibility(View.VISIBLE);
-            endDate.setVisibility(View.VISIBLE);
-            endDateTextView.setVisibility(View.VISIBLE);
-            startDateTextView.setVisibility(View.VISIBLE);
+            if (categories.size() == 0) {
+                emptyTextView.setVisibility(View.VISIBLE);
+                createButton.setVisibility(View.VISIBLE);
+                startDate.setVisibility(View.INVISIBLE);
+                endDate.setVisibility(View.INVISIBLE);
+                endDateTextView.setVisibility(View.INVISIBLE);
+                startDateTextView.setVisibility(View.INVISIBLE);
+            } else {
+                startDate.setVisibility(View.VISIBLE);
+                endDate.setVisibility(View.VISIBLE);
+                endDateTextView.setVisibility(View.VISIBLE);
+                startDateTextView.setVisibility(View.VISIBLE);
 
-            //((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(budgetPlanner.getTitle());
-            emptyTextView.setVisibility(View.INVISIBLE);
-            createButton.setVisibility(View.INVISIBLE);
+                //((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(budgetPlanner.getTitle());
+                emptyTextView.setVisibility(View.INVISIBLE);
+                createButton.setVisibility(View.INVISIBLE);
 
-            String pattern = "dd/MM/yyyy";
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-            String startDateString = simpleDateFormat.format(budgetPlannerViewModel.getCategories().getValue().get(0).getStartDate());
-            String endDateString = simpleDateFormat.format(budgetPlannerViewModel.getCategories().getValue().get(0).getEndDate());
+                String pattern = "dd/MM/yyyy";
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+                String startDateString = simpleDateFormat.format(categories.get(0).getStartDate());
+                String endDateString = simpleDateFormat.format(categories.get(0).getEndDate());
 
-            startDate.setText(startDateString);
-            endDate.setText(endDateString);
-        }
+                startDate.setText(startDateString);
+                endDate.setText(endDateString);
+            }
+        });
 
         return root;
     }

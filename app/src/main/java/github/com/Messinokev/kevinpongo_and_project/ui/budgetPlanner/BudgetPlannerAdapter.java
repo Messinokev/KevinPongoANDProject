@@ -20,9 +20,11 @@ import github.com.Messinokev.kevinpongo_and_project.R;
 public class BudgetPlannerAdapter extends RecyclerView.Adapter<BudgetPlannerAdapter.ViewHolder> {
 
     List<Category> budgetPlannerCategories;
+    BudgetPlannerViewModel viewModel;
 
-    public BudgetPlannerAdapter() {
 
+    public BudgetPlannerAdapter(BudgetPlannerViewModel viewModel) {
+        this.viewModel = viewModel;
     }
 
     @NonNull
@@ -43,11 +45,11 @@ public class BudgetPlannerAdapter extends RecyclerView.Adapter<BudgetPlannerAdap
 
         Date today = new Date();
 
-        //you can modify by back in the time but not in the future
+        //you can modify by back in  time but not in the future
         if (budgetPlannerCategories.get(position).getStartDate() <= today.getTime()) {
             holder.depositButton.setOnClickListener(v -> {
                 int deposit = Integer.parseInt(holder.deposit.getText().toString());
-                budgetPlannerCategories.get(position).setDeposit(deposit);
+                viewModel.depositMoney(budgetPlannerCategories.get(position).getId(), deposit);
                 holder.inDeposit.setText("Spent: " + budgetPlannerCategories.get(position).getDeposit());
                 holder.userAverage.setText("Your Avg: " + budgetPlannerCategories.get(position).calculateUserAveragePerDay() + " /Day");
                 holder.deposit.setText("");

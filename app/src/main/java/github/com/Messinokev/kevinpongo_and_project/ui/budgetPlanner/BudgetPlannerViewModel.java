@@ -28,4 +28,8 @@ public class BudgetPlannerViewModel extends AndroidViewModel {
     public void createCategory(final Category category){
         repository.createCategory(category);
     }
+
+    public void depositMoney(int id, int deposit){
+        repository.depositMoney(id,deposit);
+    }
 }

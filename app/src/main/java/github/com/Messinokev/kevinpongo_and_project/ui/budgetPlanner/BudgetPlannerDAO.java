@@ -17,4 +17,7 @@ public interface BudgetPlannerDAO {
     @Insert
      void createCategory(Category category);
 
+    @Query("UPDATE category_table SET deposit = deposit + :deposit WHERE id = :id")
+    void depositMoney(int id, int deposit);
+
 }

@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -32,6 +33,7 @@ public class GoalViewActivity extends AppCompatActivity{
     private  TextView depositLeft;
     private TextView errorMessage;
     private EditText deposit;
+    private Button depositButton;
 
     private GoalsViewModel goalsViewModel;
 
@@ -55,13 +57,14 @@ public class GoalViewActivity extends AppCompatActivity{
         depositLeft = findViewById(R.id.goalViewDepositLeft);
         errorMessage = findViewById(R.id.goalViewErrorMessage);
         deposit = findViewById(R.id.goalViewAddMoney);
+        depositButton = findViewById(R.id.depositMoneyButton);
 
         goalsViewModel =
                 new ViewModelProvider(this).get(GoalsViewModel.class);
         Bundle bundle = getIntent().getExtras();
-        int position = bundle.getInt("position");
+        int id = bundle.getInt("id");
 
-         goalsViewModel.getGoalById(position+1).observe(this, goal -> {
+         goalsViewModel.getGoalById(id).observe(this, goal -> {
 
             this.setTitle(goal.getTitle());
 
@@ -79,28 +82,26 @@ public class GoalViewActivity extends AppCompatActivity{
 
              refreshCalculations(goal);
              calculateAverages(goal);
+
+                depositButton.setOnClickListener(v -> {
+                    if (!deposit.getText().toString().equals("")) {
+                        if (Integer.parseInt(deposit.getText().toString()) > goal.maxDeposit()) {
+                            errorMessage.setTextColor(Color.parseColor("#FF0000"));
+                            errorMessage.setText("Max you can deposit: " + goal.maxDeposit());
+                        } else {
+                            goalsViewModel.depositMoney(goal.getId(), Integer.parseInt(deposit.getText().toString()));
+                            refreshCalculations(goal);
+                            calculateAverages(goal);
+                            deposit.setText("");
+                            errorMessage.setTextColor(Color.parseColor("#018786"));
+                            errorMessage.setText("Successfully deposited money!");
+                        }
+                    } else {
+                        errorMessage.setTextColor(Color.parseColor("#FF0000"));
+                        errorMessage.setText("Fill in Deposit Money field!");
+                    }
+                });
         });
-
-    }
-
-
-    public void depositMoney(View view, Goal goal) {
-        if (!deposit.getText().toString().equals("")) {
-            if (Integer.parseInt(deposit.getText().toString()) > goal.maxDeposit()) {
-                errorMessage.setTextColor(Color.parseColor("#FF0000"));
-                errorMessage.setText("Max you can deposit: " + goal.maxDeposit());
-            } else {
-                goal.addDeposit(Integer.parseInt(deposit.getText().toString()));
-                refreshCalculations(goal);
-                calculateAverages(goal);
-                deposit.setText("");
-                errorMessage.setTextColor(Color.parseColor("#018786"));
-                errorMessage.setText("Successfully deposited money!");
-            }
-        } else {
-            errorMessage.setTextColor(Color.parseColor("#FF0000"));
-            errorMessage.setText("Fill in Deposit Money field!");
-        }
     }
 
     private void calculateAverages(Goal goal){

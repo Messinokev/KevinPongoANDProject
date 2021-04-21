@@ -36,4 +36,8 @@ public class BudgetPlannerRepository {
     public void createCategory(Category category) {
         executorService.execute(() -> budgetPlannerDAO.createCategory(category));
     }
+
+    public void depositMoney(int id, int deposit) {
+        executorService.execute(() -> budgetPlannerDAO.depositMoney(id, deposit));
+    }
 }

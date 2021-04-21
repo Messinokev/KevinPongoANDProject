@@ -1,4 +1,4 @@
-package github.com.Messinokev.kevinpongo_and_project.ui.budgetPlanner;
+ package github.com.Messinokev.kevinpongo_and_project.ui.budgetPlanner;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;

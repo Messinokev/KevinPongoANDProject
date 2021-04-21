@@ -42,4 +42,7 @@ public class GoalRepository {
         return goalDAO.getGoalById(id);
     }
 
+    public void depositMoney(int id, int deposit){
+        executorService.execute(() -> goalDAO.depositMoney(id,deposit));
+    }
 }

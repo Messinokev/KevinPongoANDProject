@@ -251,7 +251,6 @@
             android:layout_height="45dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:onClick="depositMoney"
             android:text="+"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
