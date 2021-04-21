@@ -17,49 +17,50 @@
         android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="56dp"
+        android:layout_marginEnd="64dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toEndOf="@+id/titleTextView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/titleTextView"
         style="@style/TextViewSimple"
+        android:layout_marginStart="16dp"
         android:text="Title*:"
         app:layout_constraintBaseline_toBaselineOf="@+id/editTitle"
-        app:layout_constraintEnd_toStartOf="@+id/editTitle"
-        app:layout_constraintHorizontal_bias="0.64"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/preiceTextView"
         style="@style/TextViewSimple"
+        android:layout_marginStart="16dp"
         android:text="Price*:"
         app:layout_constraintBaseline_toBaselineOf="@+id/editPrice"
-        app:layout_constraintEnd_toStartOf="@+id/editPrice"
-        app:layout_constraintHorizontal_bias="0.594"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/editPrice"
-        android:layout_width="wrap_content"
+        android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="56dp"
+        android:layout_marginEnd="64dp"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toEndOf="@+id/preiceTextView"
         app:layout_constraintTop_toBottomOf="@+id/editTitle" />
 
     <TextView
         android:id="@+id/descriptionTextView"
         style="@style/TextViewSimple"
+        android:layout_marginStart="16dp"
         android:text="Description:"
         app:layout_constraintBaseline_toBaselineOf="@+id/editDescription"
-        app:layout_constraintEnd_toStartOf="@+id/editDescription"
-        app:layout_constraintHorizontal_bias="0.378"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -67,29 +68,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="56dp"
+        android:layout_marginEnd="64dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintStart_toEndOf="@+id/descriptionTextView"
         app:layout_constraintTop_toBottomOf="@+id/editPrice" />
 
     <TextView
         android:id="@+id/startDateTextView"
         style="@style/TextViewSimple"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="96dp"
         android:text="Start Date*:"
-        app:layout_constraintEnd_toStartOf="@+id/startDateCalendarView"
-        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descriptionTextView" />
 
     <TextView
         android:id="@+id/endDateTextView"
         style="@style/TextViewSimple"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:text="End Date*:"
-        app:layout_constraintEnd_toStartOf="@+id/startDateCalendarView"
-        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/startDateTextView" />
 
@@ -97,12 +98,16 @@
         android:id="@+id/startDateCalendarView"
         style="@style/CalendarView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toEndOf="@+id/startDateTextView"
         app:layout_constraintTop_toBottomOf="@+id/editDescription" />
 
     <CalendarView
         android:id="@+id/endDateCalendarView"
         style="@style/CalendarView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toEndOf="@+id/startDateTextView"
         app:layout_constraintTop_toBottomOf="@+id/editDescription" />
 
     <Button
@@ -116,7 +121,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/startDateCalendarView"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/errorMessage"
