@@ -10,10 +10,15 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -37,8 +42,12 @@ public class CreateGoalActivity extends AppCompatActivity {
 
     private TextView errorMessage;
 
-    private EditText editTitle;
-    private EditText editPrice;
+    private TextInputEditText editTitle;
+    private TextInputLayout titleLayout;
+
+    private TextInputEditText editPrice;
+    private TextInputLayout priceLayout;
+
     private EditText editDescription;
 
     private GoalsViewModel viewModel;
@@ -59,9 +68,14 @@ public class CreateGoalActivity extends AppCompatActivity {
         startDateText = findViewById(R.id.startDateTextView);
         endDateText = findViewById(R.id.endDateTextView);
         errorMessage = findViewById(R.id.errorMessage);
-        editTitle = findViewById(R.id.editTitle);
-        editPrice = findViewById(R.id.editPrice);
-        editDescription = findViewById(R.id.editDescription);
+        editTitle = findViewById(R.id.createGoalTitle);
+        titleLayout = findViewById(R.id.createGoalTitleLayout);
+        editPrice = findViewById(R.id.createGoalPrice);
+        priceLayout = findViewById(R.id.createGoalPriceLayout);
+        editDescription = findViewById(R.id.createGoalDescription);
+
+        titleError();
+        priceError();
 
         endDateCalendarView.setVisibility(View.INVISIBLE);
         endDateText.setTypeface(null, Typeface.NORMAL);
@@ -102,32 +116,70 @@ public class CreateGoalActivity extends AppCompatActivity {
         //end date 1sec earlier to be sure that the user do not choose the same date
         endDate = endDateCalendarView.getDate() - 1000;
 
-        if (!editTitle.getText().toString().equals("") && !editPrice.getText().toString().equals("")) {
-            if(editTitle.getText().toString().length() > 30){
-                errorMessage.setTextColor(Color.parseColor("#FF0000"));
-                errorMessage.setText("Title must NOT be longer than 30 character!");
-            }else{
-                if (startDate >= endDate) {
-                    errorMessage.setTextColor(Color.parseColor("#FF0000"));
-                    errorMessage.setText("End Date must be later than Start Date!");
-                } else {
-                    if (editDescription.getText().toString().equals("")) {
-                        editDescription.setText("");
-                    }
 
-                    Goal newGoal = new Goal(editTitle.getText().toString(), Integer.parseInt(editPrice.getText().toString()), editDescription.getText().toString(), startDate, endDate);
-                    viewModel.addGoal(newGoal);
-                    editTitle.setText("");
-                    editPrice.setText("");
-                    editDescription.setText("");
-
-                    errorMessage.setTextColor(Color.parseColor("#018786"));
-                    errorMessage.setText("Goal successfully created!");
-                }
-            }
-        } else {
+        if (startDate >= endDate) {
             errorMessage.setTextColor(Color.parseColor("#FF0000"));
-            errorMessage.setText("Fill in Title and Price fields!");
+            errorMessage.setText("END DATE MUST BE LATER THAN START DATE!");
+        } else {
+            errorMessage.setText("");
+            if (!editTitle.getText().toString().equals("") && !editPrice.getText().toString().equals("")) {
+
+                if (editDescription.getText().toString().equals("")) {
+                    editDescription.setText("");
+                }
+                Goal newGoal = new Goal(editTitle.getText().toString(), Integer.parseInt(editPrice.getText().toString()), editDescription.getText().toString(), startDate, endDate);
+                viewModel.addGoal(newGoal);
+                editTitle.setText(" ");
+                editPrice.setText(" ");
+                editDescription.setText("");
+
+                errorMessage.setTextColor(Color.parseColor("#018786"));
+                errorMessage.setText("Goal successfully created!");
+            }
         }
     }
+
+    public void titleError() {
+        editTitle.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.toString().length() != 0) {
+                    titleLayout.setError(null);
+                } else {
+                    titleLayout.setError("Required!");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+    }
+
+    public void priceError() {
+        editPrice.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.toString().length() != 0) {
+                    priceLayout.setError(null);
+                } else {
+                    priceLayout.setError("Required!");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+    }
+
+
 }

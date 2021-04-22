@@ -1,4 +1,4 @@
- package github.com.Messinokev.kevinpongo_and_project.ui.budgetPlanner;
+package github.com.Messinokev.kevinpongo_and_project.ui.budgetPlanner;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -25,23 +25,26 @@ public class Category {
         this.startDate = startDate;
         this.endDate = endDate;
         long diff = endDate - startDate;
-        numberOfDays = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+        numberOfDays = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) + 1;
     }
 
     public long calculateUserAveragePerDay() {
-        Date today = new Date();
-        long diff = today.getTime() - startDate;
-        long daysLeft = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) + 1;
+        long daysLeft = getDaysLeft();
         if (daysLeft == 0) {
-            return 0;
+            return deposit / (numberOfDays + 1);
         } else {
-            return (price-deposit)/daysLeft;
+            daysLeft += 1;
+            if (deposit > price) {
+                return deposit / (numberOfDays + 1);
+            } else {
+                return (price - deposit) / daysLeft;
+            }
         }
     }
 
     public long calculateAveragePerDay() {
         long diff = endDate - startDate;
-        long daysLeft = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) + 1;
+        long daysLeft = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) + 2;
         if (daysLeft == 0) {
             return 0;
         } else {

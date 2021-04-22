@@ -8,11 +8,16 @@ import androidx.lifecycle.ViewModelProvider;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.CalendarView;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -30,7 +35,8 @@ public class CreateBudgetPlannerActivity extends AppCompatActivity {
     private TextView endDateText;
     private Calendar calendar = Calendar.getInstance();
 
-    private EditText title;
+    private TextInputEditText title;
+    private TextInputLayout titleLayout;
     private TextView errorMessage;
 
     private EditText foodField;
@@ -47,7 +53,9 @@ public class CreateBudgetPlannerActivity extends AppCompatActivity {
     private CheckBox travelCheck;
     private CheckBox otherCheck;
 
-    BudgetPlannerViewModel viewModel;
+    private BudgetPlannerViewModel viewModel;
+
+    private List<Category> categories;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +68,7 @@ public class CreateBudgetPlannerActivity extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(BudgetPlannerViewModel.class);
 
         title = findViewById(R.id.createBudgetTitle);
+        titleLayout = findViewById(R.id.createBudgetTitleLayout);
         errorMessage = findViewById(R.id.createBudgetErrorMessage);
 
         foodField = findViewById(R.id.createBudgetFood);
@@ -74,7 +83,6 @@ public class CreateBudgetPlannerActivity extends AppCompatActivity {
         socialCheck = findViewById(R.id.createBudgetFriendsCheck);
         travelCheck = findViewById(R.id.createBudgetTravelCheck);
         otherCheck = findViewById(R.id.createBudgetOtherCheck);
-
         startDateCalendarView = findViewById(R.id.createBudgetStartDate);
         endDateCalendarView = findViewById(R.id.createBudgetEndDate);
         startDateText = findViewById(R.id.createBudgetStartDateTextView);
@@ -96,6 +104,8 @@ public class CreateBudgetPlannerActivity extends AppCompatActivity {
             endDateText.setTypeface(null, Typeface.BOLD);
             startDateText.setTypeface(null, Typeface.NORMAL);
         });
+
+        titleError();
 
         startDateCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -121,66 +131,82 @@ public class CreateBudgetPlannerActivity extends AppCompatActivity {
         //end date 1sec earlier to be sure that the user do not choose the same date
         endDate = endDateCalendarView.getDate() - 1000;
 
-        List<Category> categories = new ArrayList<>();
+        categories = new ArrayList<>();
 
-        if (!title.getText().toString().equals("")) {
+        if (startDate >= endDate) {
+            errorMessage.setTextColor(Color.parseColor("#FF0000"));
+            errorMessage.setText("END DATE MUST BE LATER THAN START DATE!");
+        } else {
+            errorMessage.setText("");
 
-            if (title.getText().toString().length() > 30) {
-                errorMessage.setTextColor(Color.parseColor("#FF0000"));
-                errorMessage.setText("Title must NOT be longer than 30 character!");
-            } else {
-                if (startDate >= endDate) {
+            if (!title.getText().toString().equals("")) {
+
+                categoryCheck();
+
+                if (categories.size() == 0) {
                     errorMessage.setTextColor(Color.parseColor("#FF0000"));
-                    errorMessage.setText("End Date must be later than Start Date!");
+                    errorMessage.setText("YOU MUST CHOOSE AT LEAST ONE CATEGORY!");
                 } else {
+                    MutableLiveData<List<Category>> categoriesLive = new MutableLiveData<>();
+                    categoriesLive.setValue(categories);
 
-                    if (foodCheck.isChecked() && !foodField.getText().toString().equals("")) {
-                        Category food = new Category("Food", Integer.parseInt(foodField.getText().toString()), startDate, endDate);
-                        categories.add(food);
-                    }
-                    if (rentCheck.isChecked() && !rentField.getText().toString().equals("")) {
-                        Category rent = new Category("Rent", Integer.parseInt(rentField.getText().toString()), startDate, endDate);
-                        categories.add(rent);
-                    }
-                    if (hobbyCheck.isChecked() && !hobbyField.getText().toString().equals("")) {
-                        Category hobby = new Category("Hobby", Integer.parseInt(hobbyField.getText().toString()), startDate, endDate);
-                        categories.add(hobby);
-                    }
-                    if (socialCheck.isChecked() && !socialField.getText().toString().equals("")) {
-                        Category social = new Category("Social", Integer.parseInt(socialField.getText().toString()), startDate, endDate);
-                        categories.add(social);
-                    }
-                    if (travelCheck.isChecked() && !travelField.getText().toString().equals("")) {
-                        Category travel = new Category("Travel", Integer.parseInt(travelField.getText().toString()),startDate, endDate);
-                        categories.add(travel);
-                    }
-                    if (otherCheck.isChecked() && !otherField.getText().toString().equals("")) {
-                        Category other = new Category("Other", Integer.parseInt(otherField.getText().toString()), startDate, endDate);
-                        categories.add(other);
+                    for (int i = 0; i < categories.size(); i++) {
+                        viewModel.createCategory(categories.get(i));
                     }
 
-                    if (categories.size() == 0){
-                        errorMessage.setTextColor(Color.parseColor("#FF0000"));
-                        errorMessage.setText("You must choose at least one category!");
-                    }
-                    else {
-                        MutableLiveData<List<Category>> categoriesLive = new MutableLiveData<>();
-                        categoriesLive.setValue(categories);
-                        //BudgetPlanner newBudgetPlanner = new BudgetPlanner(title.getText().toString(), categoriesLive);
-                        for (int i = 0; i < categories.size(); i++) {
-                            viewModel.createCategory(categories.get(i));
-                        }
-
-
-                        title.setText("");
-                        errorMessage.setTextColor(Color.parseColor("#018786"));
-                        errorMessage.setText("Budget Planner successfully created!");
-                    }
+                    title.setText(" ");
+                    errorMessage.setTextColor(Color.parseColor("#018786"));
+                    errorMessage.setText("BUDGET PLANNER SUCCESSFULLY CREATED!");
                 }
             }
-        } else {
-            errorMessage.setTextColor(Color.parseColor("#FF0000"));
-            errorMessage.setText("Fill in Title field!");
         }
+    }
+
+    public void categoryCheck(){
+        if (foodCheck.isChecked() && !foodField.getText().toString().equals("")) {
+            Category food = new Category("Food", Integer.parseInt(foodField.getText().toString()), startDate, endDate);
+            categories.add(food);
+        }
+        if (rentCheck.isChecked() && !rentField.getText().toString().equals("")) {
+            Category rent = new Category("Rent", Integer.parseInt(rentField.getText().toString()), startDate, endDate);
+            categories.add(rent);
+        }
+        if (hobbyCheck.isChecked() && !hobbyField.getText().toString().equals("")) {
+            Category hobby = new Category("Hobby", Integer.parseInt(hobbyField.getText().toString()), startDate, endDate);
+            categories.add(hobby);
+        }
+        if (socialCheck.isChecked() && !socialField.getText().toString().equals("")) {
+            Category social = new Category("Social", Integer.parseInt(socialField.getText().toString()), startDate, endDate);
+            categories.add(social);
+        }
+        if (travelCheck.isChecked() && !travelField.getText().toString().equals("")) {
+            Category travel = new Category("Travel", Integer.parseInt(travelField.getText().toString()), startDate, endDate);
+            categories.add(travel);
+        }
+        if (otherCheck.isChecked() && !otherField.getText().toString().equals("")) {
+            Category other = new Category("Other", Integer.parseInt(otherField.getText().toString()), startDate, endDate);
+            categories.add(other);
+        }
+    }
+
+    public void titleError() {
+        title.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.toString().length() != 0) {
+                    titleLayout.setError(null);
+                } else {
+                    titleLayout.setError("Required!");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
     }
 }

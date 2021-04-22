@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Date;
@@ -48,14 +47,35 @@ public class BudgetPlannerAdapter extends RecyclerView.Adapter<BudgetPlannerAdap
         //you can modify by back in  time but not in the future
         if (budgetPlannerCategories.get(position).getStartDate() <= today.getTime()) {
             holder.depositButton.setOnClickListener(v -> {
-                int deposit = Integer.parseInt(holder.deposit.getText().toString());
-                viewModel.depositMoney(budgetPlannerCategories.get(position).getId(), deposit);
-                holder.inDeposit.setText("Spent: " + budgetPlannerCategories.get(position).getDeposit());
-                holder.userAverage.setText("Your Avg: " + budgetPlannerCategories.get(position).calculateUserAveragePerDay() + " /Day");
-                holder.deposit.setText("");
+                if(!holder.deposit.getText().toString().equals("")){
+                    int deposit = Integer.parseInt(holder.deposit.getText().toString());
+                    viewModel.depositMoney(budgetPlannerCategories.get(position).getId(), deposit);
+                    holder.inDeposit.setText("Spent: " + budgetPlannerCategories.get(position).getDeposit());
+                    holder.userAverage.setText("Your Avg: " + budgetPlannerCategories.get(position).calculateUserAveragePerDay() + " /Day");
+                    holder.deposit.setText("");
+                }
             });
         }
 
+        imageChange(holder,position);
+    }
+
+    @Override
+    public int getItemCount() {
+        if (budgetPlannerCategories == null){
+            return 0;
+        }
+        else {
+            return budgetPlannerCategories.size();
+        }
+    }
+
+    public void updateData(List<Category> categories) {
+        budgetPlannerCategories = categories;
+        notifyDataSetChanged();
+    }
+
+    public void imageChange(@NonNull BudgetPlannerAdapter.ViewHolder holder, int position){
         if (budgetPlannerCategories.get(position).getName().equals("Food")){
             holder.image.setImageResource(R.drawable.food);
         }
@@ -74,21 +94,6 @@ public class BudgetPlannerAdapter extends RecyclerView.Adapter<BudgetPlannerAdap
         if (budgetPlannerCategories.get(position).getName().equals("Other")){
             holder.image.setImageResource(R.drawable.other);
         }
-    }
-
-    @Override
-    public int getItemCount() {
-        if (budgetPlannerCategories == null){
-            return 0;
-        }
-        else {
-            return budgetPlannerCategories.size();
-        }
-    }
-
-    public void updateData(List<Category> categories) {
-        budgetPlannerCategories = categories;
-        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

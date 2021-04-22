@@ -13,203 +13,81 @@
 
 
         <TextView
-            android:id="@+id/createBudgetTitleTextView"
-            style="@style/TextViewSimple"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="Title:"
-            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetTitle"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <EditText
-            android:id="@+id/createBudgetTitle"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="64dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.15"
-            app:layout_constraintStart_toEndOf="@+id/createBudgetTitleTextView"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
             android:id="@+id/createBudgetCategoriesTextView"
             style="@style/TextViewSimple"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="Categories:"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/createBudgetTitle" />
-
-        <TextView
-            android:id="@+id/createBudgetFoodTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Food:"
-            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetFood"
-            app:layout_constraintStart_toEndOf="@+id/createBudgetFoodCheck" />
-
-        <EditText
-            android:id="@+id/createBudgetFood"
-            style="@style/pricesCreateBudget"
-            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetRentCheck"
-            app:layout_constraintStart_toEndOf="@+id/createBudgetFoodTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/createBudgetTitleLayout" />
 
         <CheckBox
             android:id="@+id/createBudgetFoodCheck"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginStart="16dp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetFoodTextView"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textInputLayout2"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/createBudgetRentTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Rent:"
-            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetRent"
-            app:layout_constraintStart_toEndOf="@+id/createBudgetRentCheck" />
-
-        <EditText
-            android:id="@+id/createBudgetRent"
-            style="@style/pricesCreateBudget"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/createBudgetRentTextView"
-            app:layout_constraintTop_toBottomOf="@+id/createBudgetCategoriesTextView" />
 
         <CheckBox
             android:id="@+id/createBudgetRentCheck"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_marginStart="32dp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetRentTextView"
-            app:layout_constraintStart_toEndOf="@+id/createBudgetFood" />
-
-        <TextView
-            android:id="@+id/createBudgetFriendsTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Social:"
-            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetSocial"
-            app:layout_constraintStart_toEndOf="@+id/createBudgetFriendsCheck" />
-
-        <EditText
-            android:id="@+id/createBudgetSocial"
-            style="@style/pricesCreateBudget"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/createBudgetFriendsTextView"
-            app:layout_constraintTop_toBottomOf="@+id/createBudgetRent" />
+            android:layout_marginStart="24dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textInputLayout3"
+            app:layout_constraintStart_toEndOf="@+id/textInputLayout2" />
 
         <CheckBox
             android:id="@+id/createBudgetFriendsCheck"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginStart="24dp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetFriendsTextView"
-            app:layout_constraintStart_toEndOf="@+id/createBudgetHobby" />
-
-        <TextView
-            android:id="@+id/createBudgetHobbyTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Hobby:"
-            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetHobby"
-            app:layout_constraintStart_toEndOf="@+id/createBudgetHobbyCheck" />
-
-        <EditText
-            android:id="@+id/createBudgetHobby"
-            style="@style/pricesCreateBudget"
-            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetFriendsCheck"
-            app:layout_constraintStart_toEndOf="@+id/createBudgetHobbyTextView" />
+            app:layout_constraintBaseline_toBaselineOf="@+id/textInputLayout5"
+            app:layout_constraintStart_toEndOf="@+id/textInputLayout4" />
 
         <CheckBox
             android:id="@+id/createBudgetHobbyCheck"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginStart="16dp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetHobbyTextView"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textInputLayout4"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/createBudgetTravelTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Travel:"
-            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetTravel"
-            app:layout_constraintStart_toEndOf="@+id/createBudgetTravelCheck" />
-
-        <EditText
-            android:id="@+id/createBudgetTravel"
-            style="@style/pricesCreateBudget"
-            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetOtherCheck"
-            app:layout_constraintStart_toEndOf="@+id/createBudgetTravelTextView" />
 
         <CheckBox
             android:id="@+id/createBudgetTravelCheck"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginStart="16dp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetTravelTextView"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textInputLayout6"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/createBudgetOtherTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Other:"
-            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetOther"
-            app:layout_constraintStart_toEndOf="@+id/createBudgetOtherCheck" />
-
-        <EditText
-            android:id="@+id/createBudgetOther"
-            style="@style/pricesCreateBudget"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/createBudgetOtherTextView"
-            app:layout_constraintTop_toBottomOf="@+id/createBudgetSocial" />
 
         <CheckBox
             android:id="@+id/createBudgetOtherCheck"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginStart="24dp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetOtherTextView"
-            app:layout_constraintStart_toEndOf="@+id/createBudgetTravel" />
+            app:layout_constraintBaseline_toBaselineOf="@+id/textInputLayout7"
+            app:layout_constraintStart_toEndOf="@+id/textInputLayout6" />
 
         <TextView
             android:id="@+id/createBudgetStartDateTextView"
             style="@style/TextViewSimple"
             android:layout_marginStart="16dp"
             android:layout_marginTop="96dp"
-            android:text="Start Date:"
+            android:text="Start Date*:"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/createBudgetTravelTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
 
         <TextView
             android:id="@+id/createBudgetEndDateTextView"
             style="@style/TextViewSimple"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="End Date:"
+            android:text="End Date*:"
             app:layout_constraintEnd_toStartOf="@+id/createBudgetStartDate"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -220,32 +98,178 @@
             style="@style/CalendarView"
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.25"
-            app:layout_constraintStart_toStartOf="@+id/createBudgetTravel"
-            app:layout_constraintTop_toBottomOf="@+id/createBudgetOther" />
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout7" />
 
         <CalendarView
             android:id="@+id/createBudgetEndDate"
             style="@style/CalendarView"
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.25"
-            app:layout_constraintStart_toStartOf="@+id/createBudgetTravel"
-            app:layout_constraintTop_toBottomOf="@+id/createBudgetOther" />
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout7" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CREATE BUDGET PLANNER"
             android:onClick="createBudgetPlanner"
+            android:text="CREATE BUDGET PLANNER"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.49"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/createBudgetStartDate" />
+            app:layout_constraintTop_toBottomOf="@+id/createBudgetErrorMessage" />
 
         <TextView
             android:id="@+id/createBudgetErrorMessage"
             style="@style/warningTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createBudgetStartDate" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/createBudgetTitleLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:hint="Title"
+            app:counterEnabled="true"
+            app:counterMaxLength="20"
+            app:errorEnabled="true"
+            app:helperText="Required*"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/createBudgetTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="20"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout2"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:hint="Food"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetRentCheck"
+            app:layout_constraintStart_toEndOf="@+id/createBudgetFoodCheck">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/createBudgetFood"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="6"
+                android:inputType="number"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout3"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:hint="Rent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/createBudgetRentCheck"
+            app:layout_constraintTop_toBottomOf="@+id/createBudgetCategoriesTextView">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/createBudgetRent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="6"
+                android:inputType="number"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout4"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:hint="Hobby"
+            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetFriendsCheck"
+            app:layout_constraintStart_toEndOf="@+id/createBudgetHobbyCheck">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/createBudgetHobby"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="6"
+                android:inputType="number"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout5"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:hint="Social"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/createBudgetFriendsCheck"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/createBudgetSocial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="6"
+                android:inputType="number"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout6"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:hint="Travel"
+            app:layout_constraintBaseline_toBaselineOf="@+id/createBudgetOtherCheck"
+            app:layout_constraintStart_toEndOf="@+id/createBudgetTravelCheck">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/createBudgetTravel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="6"
+                android:inputType="number"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout7"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:hint="Other"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/createBudgetOtherCheck"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout5">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/createBudgetOther"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="6"
+                android:inputType="number"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button" />

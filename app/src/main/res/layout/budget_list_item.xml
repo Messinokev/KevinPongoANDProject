@@ -114,7 +114,8 @@
             android:background="@drawable/rounded_rightcorner_view_green"
             android:baselineAligned="false"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:maxLength="6"/>
 
         <Button
             android:id="@+id/budgetPlannerAddDepositButton"
