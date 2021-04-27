@@ -40,4 +40,8 @@ public class BudgetPlannerRepository {
     public void depositMoney(int id, int deposit) {
         executorService.execute(() -> budgetPlannerDAO.depositMoney(id, deposit));
     }
+
+    public void deleteCategories() {
+        executorService.execute(() -> budgetPlannerDAO.deleteCategories());
+    }
 }

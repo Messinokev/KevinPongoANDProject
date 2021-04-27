@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,6 +28,8 @@ public class GoalsFragment extends Fragment implements GoalAdapter.OnListItemCli
         goalsViewModel =
                 new ViewModelProvider(this).get(GoalsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_goals, container, false);
+
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
 
         recyclerView = root.findViewById(R.id.rv);
 

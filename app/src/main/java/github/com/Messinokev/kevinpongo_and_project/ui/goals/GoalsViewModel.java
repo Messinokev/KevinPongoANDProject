@@ -33,4 +33,8 @@ public class GoalsViewModel extends AndroidViewModel {
     public void depositMoney(int id, int deposit){
         repository.depositMoney(id,deposit);
     }
+
+    public void deleteGoal(int id){
+        repository.deleteGoal(id);
+    }
 }

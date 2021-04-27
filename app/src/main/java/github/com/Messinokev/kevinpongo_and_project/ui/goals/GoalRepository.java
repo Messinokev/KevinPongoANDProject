@@ -45,4 +45,8 @@ public class GoalRepository {
     public void depositMoney(int id, int deposit){
         executorService.execute(() -> goalDAO.depositMoney(id,deposit));
     }
+
+    public void deleteGoal(int id){
+        executorService.execute(() -> goalDAO.deleteGoal(id));
+    }
 }

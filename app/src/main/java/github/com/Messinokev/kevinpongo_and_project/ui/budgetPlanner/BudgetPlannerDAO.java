@@ -20,4 +20,7 @@ public interface BudgetPlannerDAO {
     @Query("UPDATE category_table SET deposit = deposit + :deposit WHERE id = :id")
     void depositMoney(int id, int deposit);
 
+    @Query("DELETE FROM category_table")
+    void deleteCategories();
+
 }

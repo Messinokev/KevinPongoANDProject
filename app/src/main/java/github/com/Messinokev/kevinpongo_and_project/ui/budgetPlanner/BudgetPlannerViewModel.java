@@ -32,4 +32,9 @@ public class BudgetPlannerViewModel extends AndroidViewModel {
     public void depositMoney(int id, int deposit){
         repository.depositMoney(id,deposit);
     }
+
+    public void deleteCategories(){
+        repository.deleteCategories();
+    }
+
 }

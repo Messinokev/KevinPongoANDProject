@@ -1,15 +1,22 @@
 package github.com.Messinokev.kevinpongo_and_project.ui.goals;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -35,6 +42,8 @@ public class GoalViewActivity extends AppCompatActivity{
     private EditText deposit;
     private Button depositButton;
 
+    private int goalId;
+
     private GoalsViewModel goalsViewModel;
 
     @Override
@@ -59,6 +68,7 @@ public class GoalViewActivity extends AppCompatActivity{
         deposit = findViewById(R.id.goalViewAddMoney);
         depositButton = findViewById(R.id.depositMoneyButton);
 
+
         goalsViewModel =
                 new ViewModelProvider(this).get(GoalsViewModel.class);
         Bundle bundle = getIntent().getExtras();
@@ -66,7 +76,8 @@ public class GoalViewActivity extends AppCompatActivity{
 
          goalsViewModel.getGoalById(id).observe(this, goal -> {
 
-            this.setTitle(goal.getTitle());
+             goalId = goal.getId();
+             this.setTitle(goal.getTitle());
 
              String pattern = "dd/MM/yyyy";
              SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
@@ -115,6 +126,23 @@ public class GoalViewActivity extends AppCompatActivity{
         progress.setText(goal.calculatePercentage() + "%");
         inDeposit.setText(String.valueOf(goal.getDeposit()));
         depositLeft.setText(String.valueOf(goal.maxDeposit()));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.toolbar_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NotNull MenuItem item){
+        int itemId = item.getItemId();
+
+        if (itemId == R.id.navigation_delete){
+            goalsViewModel.deleteGoal(goalId);
+            this.onStop();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }
