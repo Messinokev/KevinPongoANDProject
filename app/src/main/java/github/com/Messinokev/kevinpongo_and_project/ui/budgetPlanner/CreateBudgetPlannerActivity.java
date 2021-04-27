@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -54,8 +55,9 @@ public class CreateBudgetPlannerActivity extends AppCompatActivity {
     private CheckBox otherCheck;
 
     private BudgetPlannerViewModel viewModel;
-
     private List<Category> categories;
+
+    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +89,8 @@ public class CreateBudgetPlannerActivity extends AppCompatActivity {
         endDateCalendarView = findViewById(R.id.createBudgetEndDate);
         startDateText = findViewById(R.id.createBudgetStartDateTextView);
         endDateText = findViewById(R.id.createBudgetEndDateTextView);
+
+        preferences = getSharedPreferences("prefs",MODE_PRIVATE);
 
         endDateCalendarView.setVisibility(View.INVISIBLE);
         endDateText.setTypeface(null, Typeface.NORMAL);
@@ -149,6 +153,10 @@ public class CreateBudgetPlannerActivity extends AppCompatActivity {
                 } else {
                     MutableLiveData<List<Category>> categoriesLive = new MutableLiveData<>();
                     categoriesLive.setValue(categories);
+
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("title", title.getText().toString());
+                    editor.apply();
 
                     for (int i = 0; i < categories.size(); i++) {
                         viewModel.createCategory(categories.get(i));

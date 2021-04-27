@@ -1,6 +1,8 @@
 package github.com.Messinokev.kevinpongo_and_project.ui.budgetPlanner;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,21 +20,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.text.SimpleDateFormat;
 
 import github.com.Messinokev.kevinpongo_and_project.R;
-import github.com.Messinokev.kevinpongo_and_project.ui.goals.GoalAdapter;
 
 public class BudgetPlannerFragment extends Fragment {
 
     private BudgetPlannerViewModel budgetPlannerViewModel;
 
-    TextView emptyTextView;
-    Button createButton;
+    private TextView emptyTextView;
+    private Button createButton;
 
-    TextView startDateTextView;
-    TextView startDate;
-    TextView endDateTextView;
-    TextView endDate;
+    private TextView startDateTextView;
+    private TextView startDate;
+    private TextView endDateTextView;
+    private TextView endDate;
 
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
+
+    private SharedPreferences preferences;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -40,6 +43,8 @@ public class BudgetPlannerFragment extends Fragment {
                 new ViewModelProvider(this).get(BudgetPlannerViewModel.class);
         View root = inflater.inflate(R.layout.fragment_budget_planner, container, false);
 
+        preferences = this.getActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(preferences.getString("title","Budget Planner"));
 
         emptyTextView = root.findViewById(R.id.budgetPlannerEmptyTextView);
         createButton = root.findViewById(R.id.budgetPlannerGoCreateButton);
@@ -77,7 +82,7 @@ public class BudgetPlannerFragment extends Fragment {
                 endDateTextView.setVisibility(View.VISIBLE);
                 startDateTextView.setVisibility(View.VISIBLE);
 
-                //((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(budgetPlanner.getTitle());
+
                 emptyTextView.setVisibility(View.INVISIBLE);
                 createButton.setVisibility(View.INVISIBLE);
 
