@@ -63,8 +63,6 @@ public class BudgetPlannerFragment extends Fragment {
         endDateTextView = root.findViewById(R.id.budgetEndDateTextView);
         endDate = root.findViewById(R.id.budgetEndDate);
 
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(preferences.getString("title","Budget Planner"));
-
         createButton.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), CreateBudgetPlannerActivity.class);
             startActivity(intent);
@@ -90,8 +88,10 @@ public class BudgetPlannerFragment extends Fragment {
                 endDate.setVisibility(View.INVISIBLE);
                 endDateTextView.setVisibility(View.INVISIBLE);
                 startDateTextView.setVisibility(View.INVISIBLE);
-
+                ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Budget Planner");
             } else {
+                ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(preferences.getString("title","Budget Planner"));
+
                 startDate.setVisibility(View.VISIBLE);
                 endDate.setVisibility(View.VISIBLE);
                 endDateTextView.setVisibility(View.VISIBLE);
