@@ -11,9 +11,9 @@ public class Category {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
-    String name;
-    int price;
-    int deposit;
+    private String name;
+    private int price;
+    private int deposit;
     private long numberOfDays;
     private long startDate;
     private long endDate;

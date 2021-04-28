@@ -2,5 +2,5 @@
     <string name="app_name">Cashix</string>
     <string name="title_goals">My Goals</string>
     <string name="title_budgetPlanner">Budget Planner</string>
-    <string name="title_profile">Profile</string>
+    <string name="title_history">Deposit History</string>
 </resources>

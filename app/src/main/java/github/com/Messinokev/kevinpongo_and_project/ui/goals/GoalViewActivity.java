@@ -19,9 +19,12 @@ import android.widget.Toast;
 import org.jetbrains.annotations.NotNull;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import github.com.Messinokev.kevinpongo_and_project.R;
+import github.com.Messinokev.kevinpongo_and_project.ui.depositHistory.DepositHistory;
+import github.com.Messinokev.kevinpongo_and_project.ui.depositHistory.DepositHistoryViewModel;
 
 public class GoalViewActivity extends AppCompatActivity{
 
@@ -45,6 +48,7 @@ public class GoalViewActivity extends AppCompatActivity{
     private int goalId;
 
     private GoalsViewModel goalsViewModel;
+    private DepositHistoryViewModel depositHistoryViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +75,8 @@ public class GoalViewActivity extends AppCompatActivity{
 
         goalsViewModel =
                 new ViewModelProvider(this).get(GoalsViewModel.class);
+        depositHistoryViewModel = new ViewModelProvider(this).get(DepositHistoryViewModel.class);
+
         Bundle bundle = getIntent().getExtras();
         int id = bundle.getInt("id");
 
@@ -100,6 +106,9 @@ public class GoalViewActivity extends AppCompatActivity{
                             errorMessage.setTextColor(Color.parseColor("#FF0000"));
                             errorMessage.setText("Max you can deposit: " + goal.maxDeposit());
                         } else {
+                            DepositHistory newDepositHistory = new DepositHistory(goal.getTitle(), Integer.parseInt(deposit.getText().toString()) , new Date().getTime());
+                            depositHistoryViewModel.createDepositHistory(newDepositHistory);
+
                             goalsViewModel.depositMoney(goal.getId(), Integer.parseInt(deposit.getText().toString()));
                             refreshCalculations(goal);
                             calculateAverages(goal);

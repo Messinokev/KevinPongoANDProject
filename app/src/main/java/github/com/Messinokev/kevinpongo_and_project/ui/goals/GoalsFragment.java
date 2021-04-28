@@ -20,8 +20,8 @@ import github.com.Messinokev.kevinpongo_and_project.R;
 public class GoalsFragment extends Fragment implements GoalAdapter.OnListItemClickListener {
 
     private GoalsViewModel goalsViewModel;
-    RecyclerView recyclerView;
-    GoalAdapter adapter;
+    private RecyclerView recyclerView;
+    private GoalAdapter adapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -29,10 +29,7 @@ public class GoalsFragment extends Fragment implements GoalAdapter.OnListItemCli
                 new ViewModelProvider(this).get(GoalsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_goals, container, false);
 
-        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
-
         recyclerView = root.findViewById(R.id.rv);
-
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerView.hasFixedSize();
 

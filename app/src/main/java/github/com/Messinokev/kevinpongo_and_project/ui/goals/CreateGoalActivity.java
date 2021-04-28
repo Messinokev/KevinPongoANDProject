@@ -2,11 +2,8 @@ package github.com.Messinokev.kevinpongo_and_project.ui.goals;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -20,16 +17,11 @@ import android.widget.TextView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
-import java.util.Date;
 
-import github.com.Messinokev.kevinpongo_and_project.MainActivity;
 import github.com.Messinokev.kevinpongo_and_project.R;
-import github.com.Messinokev.kevinpongo_and_project.ui.goals.Goal;
-import github.com.Messinokev.kevinpongo_and_project.ui.goals.GoalsFragment;
-import github.com.Messinokev.kevinpongo_and_project.ui.goals.GoalsViewModel;
+import github.com.Messinokev.kevinpongo_and_project.ui.depositHistory.DepositHistory;
+import github.com.Messinokev.kevinpongo_and_project.ui.depositHistory.DepositHistoryViewModel;
 
 public class CreateGoalActivity extends AppCompatActivity {
 
@@ -50,7 +42,7 @@ public class CreateGoalActivity extends AppCompatActivity {
 
     private EditText editDescription;
 
-    private GoalsViewModel viewModel;
+    private GoalsViewModel goalsViewModel;
 
     private Calendar calendar = Calendar.getInstance();
 
@@ -61,7 +53,7 @@ public class CreateGoalActivity extends AppCompatActivity {
 
         this.setTitle("Create new Goal");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        viewModel = new ViewModelProvider(this).get(GoalsViewModel.class);
+        goalsViewModel = new ViewModelProvider(this).get(GoalsViewModel.class);
 
         startDateCalendarView = findViewById(R.id.startDateCalendarView);
         endDateCalendarView = findViewById(R.id.endDateCalendarView);
@@ -128,7 +120,7 @@ public class CreateGoalActivity extends AppCompatActivity {
                     editDescription.setText("");
                 }
                 Goal newGoal = new Goal(editTitle.getText().toString(), Integer.parseInt(editPrice.getText().toString()), editDescription.getText().toString(), startDate, endDate);
-                viewModel.addGoal(newGoal);
+                goalsViewModel.addGoal(newGoal);
                 editTitle.setText(" ");
                 editPrice.setText(" ");
                 editDescription.setText("");
