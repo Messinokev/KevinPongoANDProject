@@ -14,6 +14,8 @@ import github.com.Messinokev.kevinpongo_and_project.ui.goals.GoalRepository;
 
 public class BudgetPlannerViewModel extends AndroidViewModel {
 
+    private String budgetPlannerTitle = "";
+
     private BudgetPlannerRepository repository;
 
     public BudgetPlannerViewModel(Application application) {
@@ -35,6 +37,14 @@ public class BudgetPlannerViewModel extends AndroidViewModel {
 
     public void deleteCategories(){
         repository.deleteCategories();
+    }
+
+    public String getBudgetPlannerTitle() {
+        return budgetPlannerTitle;
+    }
+
+    public void setBudgetPlannerTitle(String budgetPlannerTitle) {
+        this.budgetPlannerTitle = budgetPlannerTitle;
     }
 
 }

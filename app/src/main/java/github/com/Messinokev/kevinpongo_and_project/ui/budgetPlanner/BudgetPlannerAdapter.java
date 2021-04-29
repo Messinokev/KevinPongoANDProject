@@ -15,15 +15,19 @@ import java.util.Date;
 import java.util.List;
 
 import github.com.Messinokev.kevinpongo_and_project.R;
+import github.com.Messinokev.kevinpongo_and_project.ui.depositHistory.DepositHistory;
+import github.com.Messinokev.kevinpongo_and_project.ui.depositHistory.DepositHistoryViewModel;
 
 public class BudgetPlannerAdapter extends RecyclerView.Adapter<BudgetPlannerAdapter.ViewHolder> {
 
     List<Category> budgetPlannerCategories;
-    BudgetPlannerViewModel viewModel;
+    BudgetPlannerViewModel budgetPlannerViewModel;
+    DepositHistoryViewModel depositHistoryViewModel;
 
 
-    public BudgetPlannerAdapter(BudgetPlannerViewModel viewModel) {
-        this.viewModel = viewModel;
+    public BudgetPlannerAdapter(BudgetPlannerViewModel budgetPlannerViewModel, DepositHistoryViewModel depositHistoryViewModel) {
+        this.budgetPlannerViewModel = budgetPlannerViewModel;
+        this.depositHistoryViewModel = depositHistoryViewModel;
     }
 
     @NonNull
@@ -39,7 +43,7 @@ public class BudgetPlannerAdapter extends RecyclerView.Adapter<BudgetPlannerAdap
         holder.categoryName.setText(budgetPlannerCategories.get(position).getName());
         holder.categoryPrice.setText("Plan: " + budgetPlannerCategories.get(position).getPrice());
         holder.inDeposit.setText("Spent: " + budgetPlannerCategories.get(position).getDeposit());
-        holder.average.setText("Avg: "+budgetPlannerCategories.get(position).calculateAveragePerDay() + " /Day");
+        holder.average.setText("Avg: " + budgetPlannerCategories.get(position).calculateAveragePerDay() + " /Day");
         holder.userAverage.setText("Your Avg: " + budgetPlannerCategories.get(position).calculateUserAveragePerDay() + " /Day");
 
         Date today = new Date();
@@ -47,9 +51,14 @@ public class BudgetPlannerAdapter extends RecyclerView.Adapter<BudgetPlannerAdap
         //you can modify by back in  time but not in the future
         if (budgetPlannerCategories.get(position).getStartDate() <= today.getTime()) {
             holder.depositButton.setOnClickListener(v -> {
-                if(!holder.deposit.getText().toString().equals("")){
+                if (!holder.deposit.getText().toString().equals("")) {
+                    String title = budgetPlannerViewModel.getBudgetPlannerTitle() + " - " + holder.categoryName.getText().toString();
+                    DepositHistory newDepositHistory = new DepositHistory(title, Integer.parseInt(holder.deposit.getText().toString()), new Date().getTime());
+                    depositHistoryViewModel.createDepositHistory(newDepositHistory);
+
+
                     int deposit = Integer.parseInt(holder.deposit.getText().toString());
-                    viewModel.depositMoney(budgetPlannerCategories.get(position).getId(), deposit);
+                    budgetPlannerViewModel.depositMoney(budgetPlannerCategories.get(position).getId(), deposit);
                     holder.inDeposit.setText("Spent: " + budgetPlannerCategories.get(position).getDeposit());
                     holder.userAverage.setText("Your Avg: " + budgetPlannerCategories.get(position).calculateUserAveragePerDay() + " /Day");
                     holder.deposit.setText("");
@@ -57,15 +66,14 @@ public class BudgetPlannerAdapter extends RecyclerView.Adapter<BudgetPlannerAdap
             });
         }
 
-        imageChange(holder,position);
+        imageChange(holder, position);
     }
 
     @Override
     public int getItemCount() {
-        if (budgetPlannerCategories == null){
+        if (budgetPlannerCategories == null) {
             return 0;
-        }
-        else {
+        } else {
             return budgetPlannerCategories.size();
         }
     }
@@ -75,23 +83,23 @@ public class BudgetPlannerAdapter extends RecyclerView.Adapter<BudgetPlannerAdap
         notifyDataSetChanged();
     }
 
-    public void imageChange(@NonNull BudgetPlannerAdapter.ViewHolder holder, int position){
-        if (budgetPlannerCategories.get(position).getName().equals("Food")){
+    public void imageChange(@NonNull BudgetPlannerAdapter.ViewHolder holder, int position) {
+        if (budgetPlannerCategories.get(position).getName().equals("Food")) {
             holder.image.setImageResource(R.drawable.food);
         }
-        if (budgetPlannerCategories.get(position).getName().equals("Rent")){
+        if (budgetPlannerCategories.get(position).getName().equals("Rent")) {
             holder.image.setImageResource(R.drawable.rent);
         }
-        if (budgetPlannerCategories.get(position).getName().equals("Hobby")){
+        if (budgetPlannerCategories.get(position).getName().equals("Hobby")) {
             holder.image.setImageResource(R.drawable.hobby);
         }
-        if (budgetPlannerCategories.get(position).getName().equals("Social")){
+        if (budgetPlannerCategories.get(position).getName().equals("Social")) {
             holder.image.setImageResource(R.drawable.social);
         }
-        if (budgetPlannerCategories.get(position).getName().equals("Travel")){
+        if (budgetPlannerCategories.get(position).getName().equals("Travel")) {
             holder.image.setImageResource(R.drawable.travel);
         }
-        if (budgetPlannerCategories.get(position).getName().equals("Other")){
+        if (budgetPlannerCategories.get(position).getName().equals("Other")) {
             holder.image.setImageResource(R.drawable.other);
         }
     }

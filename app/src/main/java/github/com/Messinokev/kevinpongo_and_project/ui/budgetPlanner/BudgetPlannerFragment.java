@@ -27,10 +27,12 @@ import org.jetbrains.annotations.NotNull;
 import java.text.SimpleDateFormat;
 
 import github.com.Messinokev.kevinpongo_and_project.R;
+import github.com.Messinokev.kevinpongo_and_project.ui.depositHistory.DepositHistoryViewModel;
 
 public class BudgetPlannerFragment extends Fragment {
 
     private BudgetPlannerViewModel budgetPlannerViewModel;
+    private DepositHistoryViewModel depositHistoryViewModel;
 
     private TextView emptyTextView;
     private Button createButton;
@@ -50,6 +52,8 @@ public class BudgetPlannerFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         budgetPlannerViewModel =
                 new ViewModelProvider(this).get(BudgetPlannerViewModel.class);
+        depositHistoryViewModel = new ViewModelProvider(this).get(DepositHistoryViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_budget_planner, container, false);
 
         setHasOptionsMenu(true);
@@ -73,7 +77,7 @@ public class BudgetPlannerFragment extends Fragment {
         recyclerView = root.findViewById(R.id.budgetRV);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerView.hasFixedSize();
-        BudgetPlannerAdapter adapter = new BudgetPlannerAdapter(budgetPlannerViewModel);
+        BudgetPlannerAdapter adapter = new BudgetPlannerAdapter(budgetPlannerViewModel,depositHistoryViewModel);
         recyclerView.setAdapter(adapter);
 
         budgetPlannerViewModel.getCategories().observe(getViewLifecycleOwner(), categories -> {
@@ -91,6 +95,8 @@ public class BudgetPlannerFragment extends Fragment {
                 ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Budget Planner");
             } else {
                 ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(preferences.getString("title","Budget Planner"));
+
+                budgetPlannerViewModel.setBudgetPlannerTitle(preferences.getString("title","Budget Planner"));
 
                 startDate.setVisibility(View.VISIBLE);
                 endDate.setVisibility(View.VISIBLE);

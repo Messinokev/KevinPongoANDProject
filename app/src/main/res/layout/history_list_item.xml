@@ -10,6 +10,7 @@
         android:orientation="horizontal">
 
         <TextView
+            android:background="@drawable/rounded_leftcorner_view_green"
             android:id="@+id/historyListTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,6 +23,7 @@
             android:text="Mom's birthday present"/>
 
         <TextView
+            android:background="@color/money"
             android:id="@+id/historyListDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,6 +35,7 @@
             android:textSize="14sp" />
 
         <TextView
+            android:background="@drawable/rounded_rightcorner_view_green"
             android:id="@+id/historyListDeposit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

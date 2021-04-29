@@ -104,7 +104,7 @@ public class Goal {
             } else {
                 diff = endDate - today.getTime();
             }
-            daysLeft = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) ;
+            daysLeft = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) +1 ;
         }
 
         return daysLeft;
