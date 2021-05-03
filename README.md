@@ -22,6 +22,6 @@ Should have:
 - [x] As a user I want to be able to see how much money I put and on which day, so that I can keep track of my deposit history.
 
 Could have:
-- [ ] As a user I want to be able to manage my goal, so that I can keep it up to date.
-- [ ] As a user I want to be able to manage my budget planner, so that I can keep it up to date.
-- [ ] As a user I want to be able to manage the appearance of the app, so that I can customize for myself.
+- [ ] As a user I want to be able to edit my goal, so that I can keep it up to date.
+- [ ] As a user I want to be able to edit my budget planner, so that I can keep it up to date.
+- [x] The App supports the Hungarian Language
