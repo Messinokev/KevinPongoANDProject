@@ -20,8 +20,6 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.Calendar;
 
 import github.com.Messinokev.kevinpongo_and_project.R;
-import github.com.Messinokev.kevinpongo_and_project.ui.depositHistory.DepositHistory;
-import github.com.Messinokev.kevinpongo_and_project.ui.depositHistory.DepositHistoryViewModel;
 
 public class CreateGoalActivity extends AppCompatActivity {
 
@@ -51,7 +49,7 @@ public class CreateGoalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_goal);
 
-        this.setTitle("Create new Goal");
+        this.setTitle(getResources().getString(R.string.createNewGoalText));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         goalsViewModel = new ViewModelProvider(this).get(GoalsViewModel.class);
 
@@ -111,7 +109,7 @@ public class CreateGoalActivity extends AppCompatActivity {
 
         if (startDate >= endDate) {
             errorMessage.setTextColor(Color.parseColor("#FF0000"));
-            errorMessage.setText("END DATE MUST BE LATER THAN START DATE!");
+            errorMessage.setText(getResources().getString(R.string.dateErrorMessage));
         } else {
             errorMessage.setText("");
             if (!editTitle.getText().toString().equals("") && !editPrice.getText().toString().equals("")) {
@@ -126,7 +124,7 @@ public class CreateGoalActivity extends AppCompatActivity {
                 editDescription.setText("");
 
                 errorMessage.setTextColor(Color.parseColor("#018786"));
-                errorMessage.setText("Goal successfully created!");
+                errorMessage.setText(getResources().getString(R.string.goalSuccessMessage));
             }
         }
     }
@@ -164,6 +162,7 @@ public class CreateGoalActivity extends AppCompatActivity {
                     priceLayout.setError(null);
                 } else {
                     priceLayout.setError("Required!");
+
                 }
             }
 

@@ -9,7 +9,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import github.com.Messinokev.kevinpongo_and_project.model.ProjectDatabase;
-import github.com.Messinokev.kevinpongo_and_project.ui.budgetPlanner.Category;
 
 public class DepositHistoryRepository {
 

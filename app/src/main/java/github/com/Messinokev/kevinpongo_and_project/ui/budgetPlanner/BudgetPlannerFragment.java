@@ -16,7 +16,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -92,7 +91,7 @@ public class BudgetPlannerFragment extends Fragment {
                 endDate.setVisibility(View.INVISIBLE);
                 endDateTextView.setVisibility(View.INVISIBLE);
                 startDateTextView.setVisibility(View.INVISIBLE);
-                ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Budget Planner");
+                ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getResources().getString(R.string.title_budgetPlanner));
             } else {
                 ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(preferences.getString("title","Budget Planner"));
 
@@ -130,7 +129,7 @@ public class BudgetPlannerFragment extends Fragment {
 
         if (itemId == R.id.navigation_delete){
             if (categoriesSize == 0){
-                Toast.makeText(this.getContext(),"Nothing to delete!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this.getContext(),R.string.nothingToDeleteMessage, Toast.LENGTH_SHORT).show();
             }else {
                 budgetPlannerViewModel.deleteCategories();
             }

@@ -64,7 +64,7 @@ public class CreateBudgetPlannerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_budget_planner);
 
-        this.setTitle("Create new Budget Planner");
+        this.setTitle(R.string.create_budget_plannerName);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         viewModel = new ViewModelProvider(this).get(BudgetPlannerViewModel.class);
@@ -139,7 +139,7 @@ public class CreateBudgetPlannerActivity extends AppCompatActivity {
 
         if (startDate >= endDate) {
             errorMessage.setTextColor(Color.parseColor("#FF0000"));
-            errorMessage.setText("END DATE MUST BE LATER THAN START DATE!");
+            errorMessage.setText(getResources().getString(R.string.dateErrorMessage));
         } else {
             errorMessage.setText("");
 
@@ -149,7 +149,7 @@ public class CreateBudgetPlannerActivity extends AppCompatActivity {
 
                 if (categories.size() == 0) {
                     errorMessage.setTextColor(Color.parseColor("#FF0000"));
-                    errorMessage.setText("YOU MUST CHOOSE AT LEAST ONE CATEGORY!");
+                    errorMessage.setText(getResources().getString(R.string.categoryErrorMessage));
                 } else {
                     MutableLiveData<List<Category>> categoriesLive = new MutableLiveData<>();
                     categoriesLive.setValue(categories);
@@ -161,10 +161,9 @@ public class CreateBudgetPlannerActivity extends AppCompatActivity {
                     for (int i = 0; i < categories.size(); i++) {
                         viewModel.createCategory(categories.get(i));
                     }
-
                     title.setText(" ");
                     errorMessage.setTextColor(Color.parseColor("#018786"));
-                    errorMessage.setText("BUDGET PLANNER SUCCESSFULLY CREATED!");
+                    errorMessage.setText(getResources().getString(R.string.budgetPlannerSuccessMessage));
                 }
             }
         }

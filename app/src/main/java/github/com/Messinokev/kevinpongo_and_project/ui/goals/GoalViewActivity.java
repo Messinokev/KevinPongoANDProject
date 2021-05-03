@@ -1,26 +1,20 @@
 package github.com.Messinokev.kevinpongo_and_project.ui.goals;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import github.com.Messinokev.kevinpongo_and_project.R;
 import github.com.Messinokev.kevinpongo_and_project.ui.depositHistory.DepositHistory;
@@ -104,7 +98,7 @@ public class GoalViewActivity extends AppCompatActivity{
                     if (!deposit.getText().toString().equals("")) {
                         if (Integer.parseInt(deposit.getText().toString()) > goal.maxDeposit()) {
                             errorMessage.setTextColor(Color.parseColor("#FF0000"));
-                            errorMessage.setText("Max you can deposit: " + goal.maxDeposit());
+                            errorMessage.setText(getResources().getString(R.string.maxDepositMessage) + goal.maxDeposit());
                         } else {
                             DepositHistory newDepositHistory = new DepositHistory(goal.getTitle(), Integer.parseInt(deposit.getText().toString()) , new Date().getTime());
                             depositHistoryViewModel.createDepositHistory(newDepositHistory);
@@ -114,11 +108,11 @@ public class GoalViewActivity extends AppCompatActivity{
                             calculateAverages(goal);
                             deposit.setText("");
                             errorMessage.setTextColor(Color.parseColor("#018786"));
-                            errorMessage.setText("Successfully deposited money!");
+                            errorMessage.setText(getResources().getString(R.string.depositSuccessMessage));
                         }
                     } else {
                         errorMessage.setTextColor(Color.parseColor("#FF0000"));
-                        errorMessage.setText("Fill in Deposit Money field!");
+                        errorMessage.setText(getResources().getString(R.string.depositErrorMessage));
                     }
                 });
         });

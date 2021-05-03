@@ -2,53 +2,41 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/historyListTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="2"
+        android:background="@drawable/rounded_leftcorner_view_green"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
 
-        <TextView
-            android:background="@drawable/rounded_leftcorner_view_green"
-            android:id="@+id/historyListTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="8dp"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:text="Mom's birthday present"/>
+    <TextView
+        android:id="@+id/historyListDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_weight="4"
+        android:background="@color/money"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
 
-        <TextView
-            android:background="@color/money"
-            android:id="@+id/historyListDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_weight="4"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:text="23/09/2021"
-            android:textSize="14sp" />
-
-        <TextView
-            android:background="@drawable/rounded_rightcorner_view_green"
-            android:id="@+id/historyListDeposit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="12dp"
-            android:layout_weight="4"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:text="9999999"
-            android:textSize="14sp" />
-    </LinearLayout>
-
-
-
+    <TextView
+        android:id="@+id/historyListDeposit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:layout_weight="4"
+        android:background="@drawable/rounded_rightcorner_view_green"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
 
 </LinearLayout>

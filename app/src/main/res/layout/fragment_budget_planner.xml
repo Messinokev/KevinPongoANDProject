@@ -27,7 +27,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="224dp"
         android:layout_marginEnd="8dp"
-        android:text="No Budget Planner available!"
+        android:text="@string/no_budget_planner_availableText"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/budgetPlannerGoCreateButton"
@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="300dp"
-        android:text="CREATE BUDGET PLANNER"
+        android:text="@string/create_budget_plannerButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -51,7 +51,7 @@
         android:id="@+id/budgetStartDateTextView"
         style="@style/TextViewSimple"
         android:layout_marginStart="16dp"
-        android:text="Start Date:"
+        android:text="@string/start_dateWithoutStarText"
         app:layout_constraintBaseline_toBaselineOf="@+id/budgetStartDate"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -67,7 +67,7 @@
         android:id="@+id/budgetEndDateTextView"
         style="@style/TextViewSimple"
         android:layout_marginStart="8dp"
-        android:text="End Date:"
+        android:text="@string/end_dateWithoutStarText"
         app:layout_constraintBaseline_toBaselineOf="@+id/budgetEndDate"
         app:layout_constraintStart_toEndOf="@+id/budgetStartDate" />
 

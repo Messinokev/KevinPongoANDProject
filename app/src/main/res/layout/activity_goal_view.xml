@@ -17,7 +17,7 @@
             android:id="@+id/goalViewTitleTextView"
             style="@style/TextViewSimple"
             android:layout_marginStart="16dp"
-            android:text="Title:"
+            android:text="@string/titleName"
             app:layout_constraintBaseline_toBaselineOf="@+id/goalViewTitle"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -36,7 +36,7 @@
             android:id="@+id/goalViewPriceTextView"
             style="@style/TextViewSimple"
             android:layout_marginStart="16dp"
-            android:text="Price:"
+            android:text="@string/priceText"
             app:layout_constraintBaseline_toBaselineOf="@+id/goalViewPrice"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -55,7 +55,7 @@
             android:id="@+id/goalViewDesTextView"
             style="@style/TextViewSimple"
             android:layout_marginStart="16dp"
-            android:text="Description:"
+            android:text="@string/descriptionText"
             app:layout_constraintBaseline_toBaselineOf="@+id/goalViewDescription"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -74,7 +74,7 @@
             android:id="@+id/goalViewStartDateTextView"
             style="@style/TextViewSimple"
             android:layout_marginStart="16dp"
-            android:text="Start Date:"
+            android:text="@string/start_dateWithoutStarText"
             app:layout_constraintBaseline_toBaselineOf="@+id/goalViewStartDate"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -90,7 +90,7 @@
             android:id="@+id/goalViewEndDateTextView"
             style="@style/TextViewSimple"
             android:layout_marginStart="12dp"
-            android:text="End Date:"
+            android:text="@string/end_dateWithoutStarText"
             app:layout_constraintBaseline_toBaselineOf="@+id/goalViewEndDate"
             app:layout_constraintStart_toEndOf="@+id/goalViewStartDate" />
 
@@ -109,7 +109,7 @@
             android:id="@+id/goalViewNumberOfDaysTextView"
             style="@style/TextViewSimple"
             android:layout_marginStart="48dp"
-            android:text="Days Left:"
+            android:text="@string/days_leftText"
             app:layout_constraintBaseline_toBaselineOf="@+id/goalViewDaysLeft"
             app:layout_constraintStart_toEndOf="@+id/goalViewProgress" />
 
@@ -128,7 +128,7 @@
             android:id="@+id/goalViewSavePerDayTextView"
             style="@style/TextViewSimple"
             android:layout_marginStart="16dp"
-            android:text="Save per Day:"
+            android:text="@string/save_per_dayText"
             app:layout_constraintBaseline_toBaselineOf="@+id/goalViewSavePerDay"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -144,8 +144,8 @@
         <TextView
             android:id="@+id/goalViewSavePerMonthTextView"
             style="@style/TextViewSimple"
-            android:layout_marginStart="20dp"
-            android:text="Save per Month:"
+            android:layout_marginStart="16dp"
+            android:text="@string/save_per_monthText"
             app:layout_constraintBaseline_toBaselineOf="@+id/goalViewSavePerMonth"
             app:layout_constraintStart_toEndOf="@+id/goalViewSavePerDay" />
 
@@ -165,7 +165,7 @@
             android:id="@+id/goalViewPerWeekTextView"
             style="@style/TextViewSimple"
             android:layout_marginStart="16dp"
-            android:text="Save per Week:"
+            android:text="@string/save_per_weekText"
             app:layout_constraintBaseline_toBaselineOf="@+id/goalViewSavePerWeek"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -181,7 +181,7 @@
             android:id="@+id/goalViewSavePerYearTextView"
             style="@style/TextViewSimple"
             android:layout_marginStart="8dp"
-            android:text="Save per Year:"
+            android:text="@string/save_per_yearText"
             app:layout_constraintBaseline_toBaselineOf="@+id/goalViewSavePerYear"
             app:layout_constraintStart_toEndOf="@+id/goalViewSavePerWeek" />
 
@@ -200,7 +200,7 @@
             android:id="@+id/goalViewProgressTextView"
             style="@style/TextViewSimple"
             android:layout_marginStart="16dp"
-            android:text="Progress:"
+            android:text="@string/progressText"
             app:layout_constraintBaseline_toBaselineOf="@+id/goalViewProgress"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -216,7 +216,7 @@
             android:id="@+id/goalViewInDepositTextView"
             style="@style/TextViewSimple"
             android:layout_marginStart="16dp"
-            android:text="In deposit:"
+            android:text="@string/in_depositText"
             app:layout_constraintBaseline_toBaselineOf="@+id/goalViewInDeposit"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -232,7 +232,7 @@
             android:id="@+id/viewGoalAddMoneyTextView"
             style="@style/TextViewSimple"
             android:layout_marginStart="16dp"
-            android:text="Deposit Money:"
+            android:text="@string/deposit_moneyText"
             app:layout_constraintBaseline_toBaselineOf="@+id/goalViewAddMoney"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -255,7 +255,7 @@
             android:layout_height="45dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="+"
+            android:text="@string/plusSignButton"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.6"
@@ -273,7 +273,7 @@
             android:id="@+id/goalViewDepositLeftTextView"
             style="@style/TextViewSimple"
             android:layout_marginStart="40dp"
-            android:text="Deposit Left: "
+            android:text="@string/deposit_leftText"
             app:layout_constraintBaseline_toBaselineOf="@+id/goalViewDepositLeft"
             app:layout_constraintStart_toEndOf="@+id/goalViewInDeposit" />
 

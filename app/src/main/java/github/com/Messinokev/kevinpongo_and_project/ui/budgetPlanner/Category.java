@@ -52,10 +52,6 @@ public class Category {
         }
     }
 
-    public int maxDeposit() {
-        return price - deposit;
-    }
-
     public long getDaysLeft() {
         long startDay = startDate;
         long endDay = endDate;

@@ -4,13 +4,7 @@ import android.app.Application;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
-
 import java.util.List;
-
-import github.com.Messinokev.kevinpongo_and_project.ui.budgetPlanner.BudgetPlannerRepository;
-import github.com.Messinokev.kevinpongo_and_project.ui.budgetPlanner.Category;
 
 public class DepositHistoryViewModel extends AndroidViewModel {
 

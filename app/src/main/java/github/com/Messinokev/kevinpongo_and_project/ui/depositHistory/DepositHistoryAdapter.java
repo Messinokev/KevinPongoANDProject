@@ -7,16 +7,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.textfield.TextInputLayout;
-
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import github.com.Messinokev.kevinpongo_and_project.R;
-import github.com.Messinokev.kevinpongo_and_project.ui.goals.Goal;
-import github.com.Messinokev.kevinpongo_and_project.ui.goals.GoalAdapter;
 
 public class DepositHistoryAdapter extends RecyclerView.Adapter<DepositHistoryAdapter.ViewHolder> {
 

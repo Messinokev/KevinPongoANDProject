@@ -1,15 +1,7 @@
 package github.com.Messinokev.kevinpongo_and_project.ui.goals;
 
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
-import java.sql.Time;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.Duration;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
