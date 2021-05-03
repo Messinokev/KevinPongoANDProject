@@ -24,5 +24,4 @@ Should have:
 Could have:
 - [ ] As a user I want to be able to edit my goal, so that I can keep it up to date.
 - [ ] As a user I want to be able to edit my budget planner, so that I can keep it up to date.
-- [ ] As a user I want to be able to manage the appearance of the app, so that I can customize for myself.
 - [x] The App supports the Hungarian Language
