@@ -50,4 +50,5 @@
     <string name="avgText">Átlag:</string>
     <string name="dayText">/Nap</string>
     <string name="createNewGoalText">Cél létrehozása</string>
+    <string name="successFullyCreatedText">Létrehozva!</string>
 </resources>

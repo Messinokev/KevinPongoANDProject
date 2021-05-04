@@ -13,4 +13,7 @@
     <color name="money">#66bb6a</color>
 
     <color name="teal">#4db6ac</color>
+
+    <color name="error">#FF0000</color>
+    <color name="success">#018786</color>
 </resources>

@@ -106,9 +106,8 @@ public class CreateGoalActivity extends AppCompatActivity {
         //end date 1sec earlier to be sure that the user do not choose the same date
         endDate = endDateCalendarView.getDate() - 1000;
 
-
         if (startDate >= endDate) {
-            errorMessage.setTextColor(Color.parseColor("#FF0000"));
+            errorMessage.setTextColor(getResources().getColor(R.color.error));
             errorMessage.setText(getResources().getString(R.string.dateErrorMessage));
         } else {
             errorMessage.setText("");
@@ -123,7 +122,7 @@ public class CreateGoalActivity extends AppCompatActivity {
                 editPrice.setText(" ");
                 editDescription.setText("");
 
-                errorMessage.setTextColor(Color.parseColor("#018786"));
+                errorMessage.setTextColor(getResources().getColor(R.color.success));
                 errorMessage.setText(getResources().getString(R.string.goalSuccessMessage));
             }
         }

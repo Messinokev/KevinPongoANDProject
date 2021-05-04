@@ -11,7 +11,7 @@ import java.util.List;
 @Dao
 public interface DepositHistoryDAO {
 
-    @Query("SELECT * FROM depositHistory_table")
+    @Query("SELECT * FROM depositHistory_table ORDER BY id DESC")
     LiveData<List<DepositHistory>> getAllDepositHistory();
 
     @Insert

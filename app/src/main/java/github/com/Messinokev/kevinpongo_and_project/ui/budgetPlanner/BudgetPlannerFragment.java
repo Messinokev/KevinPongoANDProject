@@ -82,6 +82,7 @@ public class BudgetPlannerFragment extends Fragment {
         budgetPlannerViewModel.getCategories().observe(getViewLifecycleOwner(), categories -> {
             adapter.updateData(categories);
 
+            //To check that any budget planner created already or not
             categoriesSize = categories.size();
 
             if (categoriesSize == 0) {

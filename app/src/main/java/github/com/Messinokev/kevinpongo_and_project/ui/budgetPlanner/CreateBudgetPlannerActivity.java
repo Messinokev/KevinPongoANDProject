@@ -72,7 +72,6 @@ public class CreateBudgetPlannerActivity extends AppCompatActivity {
         title = findViewById(R.id.createBudgetTitle);
         titleLayout = findViewById(R.id.createBudgetTitleLayout);
         errorMessage = findViewById(R.id.createBudgetErrorMessage);
-
         foodField = findViewById(R.id.createBudgetFood);
         rentField = findViewById(R.id.createBudgetRent);
         hobbyField = findViewById(R.id.createBudgetHobby);
@@ -138,7 +137,7 @@ public class CreateBudgetPlannerActivity extends AppCompatActivity {
         categories = new ArrayList<>();
 
         if (startDate >= endDate) {
-            errorMessage.setTextColor(Color.parseColor("#FF0000"));
+            errorMessage.setTextColor(getResources().getColor(R.color.error));
             errorMessage.setText(getResources().getString(R.string.dateErrorMessage));
         } else {
             errorMessage.setText("");
@@ -148,7 +147,7 @@ public class CreateBudgetPlannerActivity extends AppCompatActivity {
                 categoryCheck();
 
                 if (categories.size() == 0) {
-                    errorMessage.setTextColor(Color.parseColor("#FF0000"));
+                    errorMessage.setTextColor(getResources().getColor(R.color.error));
                     errorMessage.setText(getResources().getString(R.string.categoryErrorMessage));
                 } else {
                     MutableLiveData<List<Category>> categoriesLive = new MutableLiveData<>();
@@ -161,8 +160,10 @@ public class CreateBudgetPlannerActivity extends AppCompatActivity {
                     for (int i = 0; i < categories.size(); i++) {
                         viewModel.createCategory(categories.get(i));
                     }
-                    title.setText(" ");
-                    errorMessage.setTextColor(Color.parseColor("#018786"));
+
+                    setFieldsToEmpty();
+
+                    errorMessage.setTextColor(getResources().getColor(R.color.success));
                     errorMessage.setText(getResources().getString(R.string.budgetPlannerSuccessMessage));
                 }
             }
@@ -194,6 +195,22 @@ public class CreateBudgetPlannerActivity extends AppCompatActivity {
             Category other = new Category("Other", Integer.parseInt(otherField.getText().toString()), startDate, endDate);
             categories.add(other);
         }
+    }
+
+    public void setFieldsToEmpty(){
+        title.setText(getResources().getString(R.string.successFullyCreatedText));
+        foodCheck.setChecked(false);
+        foodField.setText("");
+        rentCheck.setChecked(false);
+        rentField.setText("");
+        travelCheck.setChecked(false);
+        travelField.setText("");
+        socialCheck.setChecked(false);
+        socialField.setText("");
+        otherCheck.setChecked(false);
+        otherField.setText("");
+        hobbyCheck.setChecked(false);
+        hobbyField.setText("");
     }
 
     public void titleError() {

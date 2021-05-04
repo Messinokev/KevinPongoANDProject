@@ -50,4 +50,5 @@
     <string name="avgText">"Avg: "</string>
     <string name="dayText">" /Day"</string>
     <string name="createNewGoalText">Create new Goal</string>
+    <string name="successFullyCreatedText">Created!</string>
 </resources>
