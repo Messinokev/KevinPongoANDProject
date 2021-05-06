@@ -1,5 +1,6 @@
 package github.com.Messinokev.kevinpongo_and_project.ui.budgetPlanner;
 
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,10 +42,11 @@ public class BudgetPlannerAdapter extends RecyclerView.Adapter<BudgetPlannerAdap
     @Override
     public void onBindViewHolder(@NonNull BudgetPlannerAdapter.ViewHolder holder, int position) {
         holder.categoryName.setText(budgetPlannerCategories.get(position).getName());
-        holder.categoryPrice.setText("Plan: " + budgetPlannerCategories.get(position).getPrice());
-        holder.inDeposit.setText("Spent: " + budgetPlannerCategories.get(position).getDeposit());
-        holder.average.setText("Avg: " + budgetPlannerCategories.get(position).calculateAveragePerDay() + " /Day");
-        holder.userAverage.setText("Your Avg: " + budgetPlannerCategories.get(position).calculateUserAveragePerDay() + " /Day");
+        Resources getResource = holder.itemView.getContext().getResources();
+        holder.categoryPrice.setText(getResource.getString(R.string.planText) + budgetPlannerCategories.get(position).getPrice());
+        holder.inDeposit.setText(getResource.getString(R.string.spentText) + budgetPlannerCategories.get(position).getDeposit());
+        holder.average.setText(getResource.getString(R.string.avgText) + budgetPlannerCategories.get(position).calculateAveragePerDay() + getResource.getString(R.string.dayText));
+        holder.userAverage.setText(getResource.getString(R.string.your_avg_dayText) + budgetPlannerCategories.get(position).calculateUserAveragePerDay() + getResource.getString(R.string.dayText));
 
         Date today = new Date();
 
@@ -59,8 +61,8 @@ public class BudgetPlannerAdapter extends RecyclerView.Adapter<BudgetPlannerAdap
 
                     int deposit = Integer.parseInt(holder.deposit.getText().toString());
                     budgetPlannerViewModel.depositMoney(budgetPlannerCategories.get(position).getId(), deposit);
-                    holder.inDeposit.setText("Spent: " + budgetPlannerCategories.get(position).getDeposit());
-                    holder.userAverage.setText("Your Avg: " + budgetPlannerCategories.get(position).calculateUserAveragePerDay() + " /Day");
+                    holder.inDeposit.setText(getResource.getString(R.string.spentText) + budgetPlannerCategories.get(position).getDeposit());
+                    holder.userAverage.setText(getResource.getString(R.string.your_avg_dayText) + budgetPlannerCategories.get(position).calculateUserAveragePerDay() + getResource.getString(R.string.dayText));
                     holder.deposit.setText("");
                 }
             });
@@ -84,22 +86,23 @@ public class BudgetPlannerAdapter extends RecyclerView.Adapter<BudgetPlannerAdap
     }
 
     public void imageChange(@NonNull BudgetPlannerAdapter.ViewHolder holder, int position) {
-        if (budgetPlannerCategories.get(position).getName().equals("Food")) {
+        Resources getResource = holder.itemView.getContext().getResources();
+        if (budgetPlannerCategories.get(position).getName().equals(getResource.getString(R.string.foodText))) {
             holder.image.setImageResource(R.drawable.food);
         }
-        if (budgetPlannerCategories.get(position).getName().equals("Rent")) {
+        if (budgetPlannerCategories.get(position).getName().equals(getResource.getString(R.string.rentText))) {
             holder.image.setImageResource(R.drawable.rent);
         }
-        if (budgetPlannerCategories.get(position).getName().equals("Hobby")) {
+        if (budgetPlannerCategories.get(position).getName().equals(getResource.getString(R.string.hobbyText))) {
             holder.image.setImageResource(R.drawable.hobby);
         }
-        if (budgetPlannerCategories.get(position).getName().equals("Social")) {
+        if (budgetPlannerCategories.get(position).getName().equals(getResource.getString(R.string.socialText))) {
             holder.image.setImageResource(R.drawable.social);
         }
-        if (budgetPlannerCategories.get(position).getName().equals("Travel")) {
+        if (budgetPlannerCategories.get(position).getName().equals(getResource.getString(R.string.travelText))) {
             holder.image.setImageResource(R.drawable.travel);
         }
-        if (budgetPlannerCategories.get(position).getName().equals("Other")) {
+        if (budgetPlannerCategories.get(position).getName().equals(getResource.getString(R.string.otherText))) {
             holder.image.setImageResource(R.drawable.other);
         }
     }

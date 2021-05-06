@@ -172,27 +172,27 @@ public class CreateBudgetPlannerActivity extends AppCompatActivity {
 
     public void categoryCheck(){
         if (foodCheck.isChecked() && !foodField.getText().toString().equals("")) {
-            Category food = new Category("Food", Integer.parseInt(foodField.getText().toString()), startDate, endDate);
+            Category food = new Category(getResources().getString(R.string.foodText), Integer.parseInt(foodField.getText().toString()), startDate, endDate);
             categories.add(food);
         }
         if (rentCheck.isChecked() && !rentField.getText().toString().equals("")) {
-            Category rent = new Category("Rent", Integer.parseInt(rentField.getText().toString()), startDate, endDate);
+            Category rent = new Category(getResources().getString(R.string.rentText), Integer.parseInt(rentField.getText().toString()), startDate, endDate);
             categories.add(rent);
         }
         if (hobbyCheck.isChecked() && !hobbyField.getText().toString().equals("")) {
-            Category hobby = new Category("Hobby", Integer.parseInt(hobbyField.getText().toString()), startDate, endDate);
+            Category hobby = new Category(getResources().getString(R.string.hobbyText), Integer.parseInt(hobbyField.getText().toString()), startDate, endDate);
             categories.add(hobby);
         }
         if (socialCheck.isChecked() && !socialField.getText().toString().equals("")) {
-            Category social = new Category("Social", Integer.parseInt(socialField.getText().toString()), startDate, endDate);
+            Category social = new Category(getResources().getString(R.string.socialText), Integer.parseInt(socialField.getText().toString()), startDate, endDate);
             categories.add(social);
         }
         if (travelCheck.isChecked() && !travelField.getText().toString().equals("")) {
-            Category travel = new Category("Travel", Integer.parseInt(travelField.getText().toString()), startDate, endDate);
+            Category travel = new Category(getResources().getString(R.string.travelText), Integer.parseInt(travelField.getText().toString()), startDate, endDate);
             categories.add(travel);
         }
         if (otherCheck.isChecked() && !otherField.getText().toString().equals("")) {
-            Category other = new Category("Other", Integer.parseInt(otherField.getText().toString()), startDate, endDate);
+            Category other = new Category(getResources().getString(R.string.otherText), Integer.parseInt(otherField.getText().toString()), startDate, endDate);
             categories.add(other);
         }
     }

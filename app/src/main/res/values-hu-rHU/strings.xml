@@ -36,7 +36,7 @@
     <string name="your_avg_dayText">Átlagod:</string>
     <string name="avg_dayText">Átlag/Nap</string>
     <string name="spentText">Költött:</string>
-    <string name="planText">Tervezett:</string>
+    <string name="planText">Terv:</string>
     <string name="create_budget_plannerName">Kiadás tervező létrehozása</string>
     <string name="dateErrorMessage">UTOLSÓ NAP KÉSŐBB LEGYEN MINT AZ ELSŐ!</string>
     <string name="categoryErrorMessage">LEGALÁBB EGY KATEGÓRIÁT VÁLASSZ!</string>
