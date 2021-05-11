@@ -50,7 +50,7 @@ public class BudgetPlannerAdapter extends RecyclerView.Adapter<BudgetPlannerAdap
 
         Date today = new Date();
 
-        //you can modify by back in  time but not in the future
+        //you can modify by back in time but not in the future
         if (budgetPlannerCategories.get(position).getStartDate() <= today.getTime()) {
             holder.depositButton.setOnClickListener(v -> {
                 if (!holder.deposit.getText().toString().equals("")) {
@@ -80,11 +80,20 @@ public class BudgetPlannerAdapter extends RecyclerView.Adapter<BudgetPlannerAdap
         }
     }
 
+    /**
+     *
+     * @param categories list, this method is used in the fragment so when the categories list changes the recycle view observes it and changes as well
+     */
     public void updateData(List<Category> categories) {
         budgetPlannerCategories = categories;
         notifyDataSetChanged();
     }
 
+    /**
+     * Change the little icons in the budget planner recycle view
+     * @param holder  to be able to make changes on the viewholder
+     * @param position to know which item should be changed
+     */
     public void imageChange(@NonNull BudgetPlannerAdapter.ViewHolder holder, int position) {
         Resources getResource = holder.itemView.getContext().getResources();
         if (budgetPlannerCategories.get(position).getName().equals(getResource.getString(R.string.foodText))) {

@@ -32,17 +32,23 @@ public class Goal {
         deposit = 0;
     }
 
+    /**
+     *
+     * @return an int which shows the percentage of the goal saving process
+     */
     public int calculatePercentage() {
         double dDeposit = deposit;
         double dPrice = price;
+
         int percentage = (int) Math.round(((dDeposit / dPrice) * 100));
 
-        if (percentage > 100) {
-            percentage = 100;
-        }
         return percentage;
     }
 
+    /**
+     *
+     * @return a long which gives how much the user should save per day
+     */
     public long calculateAveragePerDay() {
         long daysLeft = getDaysLeft();
         if (daysLeft == 0) {
@@ -52,6 +58,10 @@ public class Goal {
         }
     }
 
+    /**
+     *
+     * @return a long which gives how much the user should save per week (if the there are enough days for week(s))
+     */
     public long calculateAveragePerWeek() {
         long daysLeft = getDaysLeft() / 7;
         if (daysLeft == 0) {
@@ -61,6 +71,10 @@ public class Goal {
         }
     }
 
+    /**
+     *
+     * @return a long which gives how much the user should save per month (if the there are enough days for month(s))
+     */
     public long calculateAveragePerMonth() {
         long daysLeft = getDaysLeft() / 30;
         if (daysLeft == 0) {
@@ -70,6 +84,10 @@ public class Goal {
         }
     }
 
+    /**
+     *
+     * @return a long which gives how much the user should save per year (if the there are enough days for year(s))
+     */
     public long calculateAveragePerYear() {
         long daysLeft = getDaysLeft() / 365;
         if (daysLeft == 0) {
@@ -79,10 +97,13 @@ public class Goal {
         }
     }
 
+    /**
+     *
+     * @return a long which gives how many days left until the end date of the goal
+     */
     public long getDaysLeft() {
         long startDay = startDate;
         long endDay = endDate;
-
 
         Date today = new Date();
         long daysLeft;
@@ -98,19 +119,16 @@ public class Goal {
             }
             daysLeft = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) +1 ;
         }
-
         return daysLeft;
     }
 
-    public void addDeposit(int deposit) {
-        this.deposit += deposit;
-        calculatePercentage();
-    }
-
+    /**
+     *
+     * @return a String with a color name what is used in the adapter later to set the background color of the goal
+     */
     public String backgroundColor() {
         long diff = endDate - startDate;
         long totalDays = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) + 1;
-
         long daysLeft = getDaysLeft();
 
         double calculate = (double) (totalDays-daysLeft) / totalDays;
@@ -119,12 +137,19 @@ public class Goal {
             if (calculate < 0.75) {
                 return "Green";
             }
-
             if (calculate < 0.9) {
                 return "Orange";
             }
         }
         return "Red";
+    }
+
+    /**
+     *
+     * @return an int which is the leftover deposit to achieve the goal
+     */
+    public int maxDeposit() {
+        return price - deposit;
     }
 
     public int getId() {
@@ -133,10 +158,6 @@ public class Goal {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int maxDeposit() {
-        return price - deposit;
     }
 
     public int getDeposit() {

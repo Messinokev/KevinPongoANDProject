@@ -23,6 +23,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Set;
 
 import github.com.Messinokev.kevinpongo_and_project.R;
 
@@ -35,28 +36,23 @@ public class CreateBudgetPlannerActivity extends AppCompatActivity {
     private TextView startDateText;
     private TextView endDateText;
     private Calendar calendar = Calendar.getInstance();
-
     private TextInputEditText title;
     private TextInputLayout titleLayout;
     private TextView errorMessage;
-
     private EditText foodField;
     private EditText rentField;
     private EditText hobbyField;
     private EditText socialField;
     private EditText travelField;
     private EditText otherField;
-
     private CheckBox foodCheck;
     private CheckBox rentCheck;
     private CheckBox hobbyCheck;
     private CheckBox socialCheck;
     private CheckBox travelCheck;
     private CheckBox otherCheck;
-
     private BudgetPlannerViewModel viewModel;
     private List<Category> categories;
-
     private SharedPreferences preferences;
 
     @Override
@@ -89,11 +85,14 @@ public class CreateBudgetPlannerActivity extends AppCompatActivity {
         startDateText = findViewById(R.id.createBudgetStartDateTextView);
         endDateText = findViewById(R.id.createBudgetEndDateTextView);
 
-        preferences = getSharedPreferences("prefs",MODE_PRIVATE);
+        //Get the shared preferences
+        preferences = getSharedPreferences("prefs", MODE_PRIVATE);
 
+        //To be able to change between start and end date calendars
         endDateCalendarView.setVisibility(View.INVISIBLE);
         endDateText.setTypeface(null, Typeface.NORMAL);
 
+        //Start date text is clickable to be able to open the start date calendar
         startDateText.setOnClickListener(v -> {
             startDateCalendarView.setVisibility(View.VISIBLE);
             endDateCalendarView.setVisibility(View.INVISIBLE);
@@ -101,6 +100,7 @@ public class CreateBudgetPlannerActivity extends AppCompatActivity {
             endDateText.setTypeface(null, Typeface.NORMAL);
         });
 
+        //End date text is clickable to be able to open the end date calendar
         endDateText.setOnClickListener(v -> {
             startDateCalendarView.setVisibility(View.INVISIBLE);
             endDateCalendarView.setVisibility(View.VISIBLE);
@@ -108,8 +108,11 @@ public class CreateBudgetPlannerActivity extends AppCompatActivity {
             startDateText.setTypeface(null, Typeface.NORMAL);
         });
 
+        //Observer method to check the title textInputEditText field
         titleError();
 
+
+        //Set the start date calendar to listen for changes and save that date what the user chose
         startDateCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
@@ -118,6 +121,7 @@ public class CreateBudgetPlannerActivity extends AppCompatActivity {
             }
         });
 
+        //Set the end date calendar to listen for changes and save that date what the user chose
         endDateCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
@@ -125,10 +129,9 @@ public class CreateBudgetPlannerActivity extends AppCompatActivity {
                 endDateCalendarView.setDate(calendar.getTimeInMillis());
             }
         });
-
-
     }
 
+    //This is an OnClick method which is called when the create budget planner button is clicked
     public void createBudgetPlanner(View view) {
         startDate = startDateCalendarView.getDate();
         //end date 1sec earlier to be sure that the user do not choose the same date
@@ -150,9 +153,6 @@ public class CreateBudgetPlannerActivity extends AppCompatActivity {
                     errorMessage.setTextColor(getResources().getColor(R.color.error));
                     errorMessage.setText(getResources().getString(R.string.categoryErrorMessage));
                 } else {
-                    MutableLiveData<List<Category>> categoriesLive = new MutableLiveData<>();
-                    categoriesLive.setValue(categories);
-
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putString("title", title.getText().toString());
                     editor.apply();
@@ -170,7 +170,10 @@ public class CreateBudgetPlannerActivity extends AppCompatActivity {
         }
     }
 
-    public void categoryCheck(){
+    /**
+     * This method adds the checked items to the list
+     */
+    public void categoryCheck() {
         if (foodCheck.isChecked() && !foodField.getText().toString().equals("")) {
             Category food = new Category(getResources().getString(R.string.foodText), Integer.parseInt(foodField.getText().toString()), startDate, endDate);
             categories.add(food);
@@ -197,7 +200,10 @@ public class CreateBudgetPlannerActivity extends AppCompatActivity {
         }
     }
 
-    public void setFieldsToEmpty(){
+    /**
+     * After creation this method is called to set all field back to empty
+     */
+    public void setFieldsToEmpty() {
         title.setText(getResources().getString(R.string.successFullyCreatedText));
         foodCheck.setChecked(false);
         foodField.setText("");
@@ -213,6 +219,9 @@ public class CreateBudgetPlannerActivity extends AppCompatActivity {
         hobbyField.setText("");
     }
 
+    /**
+     * Title error method, observe the title textInputEditText field during changes and if the title length is 0 print out required
+     */
     public void titleError() {
         title.addTextChangedListener(new TextWatcher() {
             @Override

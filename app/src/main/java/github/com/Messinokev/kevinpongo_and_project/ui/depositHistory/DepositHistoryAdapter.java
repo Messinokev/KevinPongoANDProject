@@ -45,6 +45,10 @@ public class DepositHistoryAdapter extends RecyclerView.Adapter<DepositHistoryAd
         }
     }
 
+    /**
+     *
+     * @param depositHistories list, this method is used in the fragment so when the depositHistories list changes the recycle view observes it and changes as well
+     */
     public void updateData(List<DepositHistory> depositHistories) {
         this.depositHistories = depositHistories;
         notifyDataSetChanged();

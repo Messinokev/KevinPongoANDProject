@@ -46,6 +46,10 @@ public class GoalsFragment extends Fragment implements GoalAdapter.OnListItemCli
         return root;
     }
 
+    /**
+     * This method is responsible what should happen when a recycle view item is clicked
+     * @param position to pass the clicked item id from its position, later we need this to retrieve the appropriate goal from the db
+     */
     @Override
     public void onClick(int position) {
 

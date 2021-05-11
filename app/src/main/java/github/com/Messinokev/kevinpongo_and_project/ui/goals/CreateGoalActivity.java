@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Editable;
@@ -29,19 +28,13 @@ public class CreateGoalActivity extends AppCompatActivity {
     private long endDate;
     private TextView startDateText;
     private TextView endDateText;
-
     private TextView errorMessage;
-
     private TextInputEditText editTitle;
     private TextInputLayout titleLayout;
-
     private TextInputEditText editPrice;
     private TextInputLayout priceLayout;
-
     private EditText editDescription;
-
     private GoalsViewModel goalsViewModel;
-
     private Calendar calendar = Calendar.getInstance();
 
     @Override
@@ -64,12 +57,18 @@ public class CreateGoalActivity extends AppCompatActivity {
         priceLayout = findViewById(R.id.createGoalPriceLayout);
         editDescription = findViewById(R.id.createGoalDescription);
 
+        /**
+         * The two error method what observe the textInputEditText fields, and print out the error what is set in the methods
+         */
         titleError();
         priceError();
 
         endDateCalendarView.setVisibility(View.INVISIBLE);
         endDateText.setTypeface(null, Typeface.NORMAL);
 
+        /**
+         *Start date text is clickable to select the start date calender, the text becomes bold
+         */
         startDateText.setOnClickListener(v -> {
             startDateCalendarView.setVisibility(View.VISIBLE);
             endDateCalendarView.setVisibility(View.INVISIBLE);
@@ -77,6 +76,9 @@ public class CreateGoalActivity extends AppCompatActivity {
             endDateText.setTypeface(null, Typeface.NORMAL);
         });
 
+        /**
+         *End date text is clickable to select the start date calender, the text becomes bold
+         */
         endDateText.setOnClickListener(v -> {
             startDateCalendarView.setVisibility(View.INVISIBLE);
             endDateCalendarView.setVisibility(View.VISIBLE);
@@ -84,6 +86,9 @@ public class CreateGoalActivity extends AppCompatActivity {
             startDateText.setTypeface(null, Typeface.NORMAL);
         });
 
+        /**
+         * Set the start date calendar to listen for changes and save that date what the user chose
+         */
         startDateCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
@@ -92,6 +97,9 @@ public class CreateGoalActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * Set the start date calendar to listen for changes and save that date what the user chose
+         */
         endDateCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
@@ -101,9 +109,13 @@ public class CreateGoalActivity extends AppCompatActivity {
         });
     }
 
+
+    /**
+     * The addGoal method is called when the add goal button is pressed
+     */
     public void addGoal(View view) {
         startDate = startDateCalendarView.getDate();
-        //end date 1sec earlier to be sure that the user do not choose the same date
+        //set the end date 1sec earlier to make sure that the user do not choose the same date
         endDate = endDateCalendarView.getDate() - 1000;
 
         if (startDate >= endDate) {
@@ -128,6 +140,10 @@ public class CreateGoalActivity extends AppCompatActivity {
         }
     }
 
+
+    /**
+     * Title error method, observe the title textInputEditText field during changes and if the title length is 0 print out required
+     */
     public void titleError() {
         editTitle.addTextChangedListener(new TextWatcher() {
             @Override
@@ -149,6 +165,10 @@ public class CreateGoalActivity extends AppCompatActivity {
         });
     }
 
+
+    /**
+     * price error method, observe the price textInputEditText field during changes and if the title length is 0 print out required
+     */
     public void priceError() {
         editPrice.addTextChangedListener(new TextWatcher() {
             @Override
@@ -161,7 +181,6 @@ public class CreateGoalActivity extends AppCompatActivity {
                     priceLayout.setError(null);
                 } else {
                     priceLayout.setError("Required!");
-
                 }
             }
 
@@ -170,6 +189,5 @@ public class CreateGoalActivity extends AppCompatActivity {
             }
         });
     }
-
 
 }

@@ -74,6 +74,9 @@ public class GoalViewActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         int id = bundle.getInt("id");
 
+        /**
+         * Observe that goal what was clicked in the recycle view
+         */
         goalsViewModel.getGoalById(id).observe(this, goal -> {
 
             goalId = goal.getId();
@@ -83,7 +86,6 @@ public class GoalViewActivity extends AppCompatActivity {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
             String startDateString = simpleDateFormat.format(goal.getStartDate());
             String endDateString = simpleDateFormat.format(goal.getEndDate());
-
             title.setText(goal.getTitle());
             price.setText(String.valueOf(goal.getPrice()));
             description.setText(goal.getDescription());
@@ -100,6 +102,7 @@ public class GoalViewActivity extends AppCompatActivity {
                         errorMessage.setTextColor(getResources().getColor(R.color.error));
                         errorMessage.setText(getResources().getString(R.string.maxDepositMessage) + goal.maxDeposit());
                     } else {
+                        //Create a new deposit history
                         DepositHistory newDepositHistory = new DepositHistory(goal.getTitle(), Integer.parseInt(deposit.getText().toString()), new Date().getTime());
                         depositHistoryViewModel.createDepositHistory(newDepositHistory);
 
@@ -116,8 +119,13 @@ public class GoalViewActivity extends AppCompatActivity {
                 }
             });
         });
+
     }
 
+    /**
+     * Calculates the averages for this goal and edit those textviews
+     * @param goal to pass which goal is used currently
+     */
     private void calculateAverages(Goal goal) {
         savePerDay.setText(String.valueOf(goal.calculateAveragePerDay()));
         savePerWeek.setText(String.valueOf(goal.calculateAveragePerWeek()));
@@ -125,18 +133,32 @@ public class GoalViewActivity extends AppCompatActivity {
         savePerYear.setText(String.valueOf(goal.calculateAveragePerYear()));
     }
 
+    /**
+     * Edit the needed textviews with the newly calculated data
+     * @param goal to pass which goal is used currently
+     */
     private void refreshCalculations(Goal goal) {
         progress.setText(goal.calculatePercentage() + "%");
         inDeposit.setText(String.valueOf(goal.getDeposit()));
         depositLeft.setText(String.valueOf(goal.maxDeposit()));
     }
 
+    /**
+     * Add the menu what I created (trash icon for deletion)
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
+    /**
+     * This method is responsible for action should happen if the trash (deletion) icon is clicked
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(@NotNull MenuItem item) {
         int itemId = item.getItemId();

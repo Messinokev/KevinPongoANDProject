@@ -21,7 +21,6 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.ViewHolder> {
     public GoalAdapter(OnListItemClickListener listener) {
         this.listener = listener;
     }
-
     @NonNull
     @Override
     public GoalAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -35,6 +34,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.ViewHolder> {
         holder.title.setText(goals.get(position).getTitle());
         
         int percentage = goals.get(position).calculatePercentage();
+
 
         holder.percentage.setText(percentage + "%");
         holder.progressBar.setProgress(percentage);
@@ -63,6 +63,10 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.ViewHolder> {
         }
     }
 
+    /**
+     *
+     * @param goals list, this method is used in the fragment so when the goal list changes the recycle view observes it and changes as well
+     */
     public void updateData(List<Goal> goals) {
         this.goals = goals;
         notifyDataSetChanged();
@@ -87,6 +91,9 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.ViewHolder> {
         }
     }
 
+    /**
+     * The recycle view items are clickable so an OnClickListener is set
+     */
     public interface OnListItemClickListener {
         void onClick(int position);
     }

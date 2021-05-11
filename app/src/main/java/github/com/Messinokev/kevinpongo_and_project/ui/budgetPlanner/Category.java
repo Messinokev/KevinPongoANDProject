@@ -28,6 +28,10 @@ public class Category {
         numberOfDays = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) + 1;
     }
 
+    /**
+     *
+     * @return a long which gives how much the user should spend per day
+     */
     public long calculateUserAveragePerDay() {
         long daysLeft = getDaysLeft();
         if (daysLeft == 0) {
@@ -42,6 +46,10 @@ public class Category {
         }
     }
 
+    /**
+     *
+     * @return a long which gives how much the average per day the user should spend
+     */
     public long calculateAveragePerDay() {
         long diff = endDate - startDate;
         long daysLeft = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) + 2;
@@ -52,6 +60,10 @@ public class Category {
         }
     }
 
+    /**
+     *
+     * @return a long of how many days left of the budget planner
+     */
     public long getDaysLeft() {
         long startDay = startDate;
         long endDay = endDate;

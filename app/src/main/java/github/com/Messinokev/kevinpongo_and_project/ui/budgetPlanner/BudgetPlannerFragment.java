@@ -32,19 +32,14 @@ public class BudgetPlannerFragment extends Fragment {
 
     private BudgetPlannerViewModel budgetPlannerViewModel;
     private DepositHistoryViewModel depositHistoryViewModel;
-
     private TextView emptyTextView;
     private Button createButton;
-
     private TextView startDateTextView;
     private TextView startDate;
     private TextView endDateTextView;
     private TextView endDate;
-
     private RecyclerView recyclerView;
-
     private SharedPreferences preferences;
-
     private int categoriesSize;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -55,8 +50,9 @@ public class BudgetPlannerFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_budget_planner, container, false);
 
+        //needed to see the trash icon
         setHasOptionsMenu(true);
-
+        //get the shared preferences
         preferences = this.getActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE);
 
         emptyTextView = root.findViewById(R.id.budgetPlannerEmptyTextView);
@@ -66,6 +62,7 @@ public class BudgetPlannerFragment extends Fragment {
         endDateTextView = root.findViewById(R.id.budgetEndDateTextView);
         endDate = root.findViewById(R.id.budgetEndDate);
 
+        //set an onClickListener to the budgetCreate button, which opens the create activity
         createButton.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), CreateBudgetPlannerActivity.class);
             startActivity(intent);
@@ -102,7 +99,6 @@ public class BudgetPlannerFragment extends Fragment {
                 endDate.setVisibility(View.VISIBLE);
                 endDateTextView.setVisibility(View.VISIBLE);
                 startDateTextView.setVisibility(View.VISIBLE);
-
                 emptyTextView.setVisibility(View.INVISIBLE);
                 createButton.setVisibility(View.INVISIBLE);
 
@@ -118,12 +114,22 @@ public class BudgetPlannerFragment extends Fragment {
         return root;
     }
 
+    /**
+     * Add the menu what I created (trash icon for deletion)
+     * @param menu
+     * @return
+     */
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
         inflater.inflate(R.menu.toolbar_menu,menu);
          super.onCreateOptionsMenu(menu,inflater);
     }
 
+    /**
+     * This method is responsible for the action should happen if the trash (deletion) icon is clicked
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(@NotNull MenuItem item){
         int itemId = item.getItemId();
