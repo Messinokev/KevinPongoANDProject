@@ -1,5 +1,7 @@
 # KevinPongoANDProject
 
+Video: https://www.youtube.com/watch?v=gXjJYAXhU3E&ab_channel=KevinPong%C3%B3
+
 The motivation behind my project is, that I like keeping track of my  expenditures. I always do this in an excel file, so it is a good opportunity to make an app for it. 
 
 The app is about saving money for a trip, for a car, or anything the user wants to save for. The user can create a goal with a budget, so how much money is needed, and the user can set a time period, when the user wants to achieve this goal. The app can show how much money the user should save per day, per week, or per month. Also, a user can invite others to achieve a goal together. In this case there will be a leader board what shows who put the most money in the goal.
